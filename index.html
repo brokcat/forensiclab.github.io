@@ -24,10 +24,53 @@
             </div>
         </div>
         
-        <div class="preview-mode-banner">
-            <i class="fas fa-exclamation-triangle"></i> You are in Preview Mode. Upgrade to access full features.
-            <button class="upgrade-button">Enroll for Full Access</button>
+        <div class="construction-banner">
+            <i class="fas fa-hard-hat"></i> Ce site est actuellement en construction et n'est pas accessible au public.
+            <div class="password-form-inline">
+                <input type="password" id="password-input" placeholder="Entrez le mot de passe pour accéder">
+                <button id="access-button">Accéder</button>
+            </div>
         </div>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const passwordInput = document.getElementById('password-input');
+                const accessButton = document.getElementById('access-button');
+                const constructionBanner = document.querySelector('.construction-banner');
+                
+                // Mot de passe correct
+                const correctPassword = 'brokcat11!?!?';
+                
+                // Vérifier si l'utilisateur a déjà entré le bon mot de passe
+                if (localStorage.getItem('siteAccess') === 'granted') {
+                    constructionBanner.style.display = 'none';
+                }
+                
+                accessButton.addEventListener('click', checkPassword);
+                passwordInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkPassword();
+                    }
+                });
+                
+                function checkPassword() {
+                    if (passwordInput.value === correctPassword) {
+                        // Stocker l'accès dans le localStorage
+                        localStorage.setItem('siteAccess', 'granted');
+                        // Cacher la bannière
+                        constructionBanner.style.display = 'none';
+                    } else {
+                        // Secouer l'input pour indiquer une erreur
+                        passwordInput.classList.add('shake');
+                        setTimeout(() => {
+                            passwordInput.classList.remove('shake');
+                        }, 500);
+                        passwordInput.value = '';
+                        passwordInput.focus();
+                    }
+                }
+            });
+        </script>
         
         <div class="sidebar">
             <div class="sidebar-header">
