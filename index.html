@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberForensics | Blue Team Training Platform</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Une plateforme complète de formation en forensique numérique avec des cours, des labs et des challenges">
+    <link rel="icon" href="assets/images/favicon.ico">
+</head>
+<body>
+    <div id="app">
+        <div class="top-navbar">
+            <div class="logo">
+                <img src="https://cyberdefenders.org/static/cd-logo-white.png" alt="Logo">
+                <span>CyberForensics</span>
+            </div>
+            <div class="actions">
+                <button><i class="fas fa-user"></i> Sign In</button>
+            </div>
+        </div>
+        
+        <div class="preview-mode-banner">
+            <i class="fas fa-exclamation-triangle"></i> You are in Preview Mode. Upgrade to access full features.
+            <button class="upgrade-button">Enroll for Full Access</button>
+        </div>
+        
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Learning Paths</h2>
+            </div>
+            <div class="sidebar-content">
+                <ul class="question-list">
+                    <li class="question-item active">
+                        <i class="fas fa-shield-alt"></i> Security Operations Fundamentals
+                    </li>
+                    <li class="question-item">
+                        <i class="fas fa-bug"></i> Malware Analysis
+                    </li>
+                    <li class="question-item">
+                        <i class="fas fa-network-wired"></i> Network Security
+                    </li>
+                    <li class="question-item">
+                        <i class="fas fa-laptop-code"></i> Threat Hunting
+                    </li>
+                    <li class="question-item">
+                        <i class="fas fa-search"></i> Digital Forensics
+                    </li>
+                    <li class="question-item">
+                        <i class="fas fa-file-code"></i> Log Analysis
+                    </li>
+                </ul>
+                
+                <div class="progress-container">
+                    <h3>Certified CyberDefender</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <p>0% complete</p>
+                </div>
+            </div>
+        </div>
+
+    <div class="main-content">
+        <nav>
+            <div class="nav-content">
+                <div class="breadcrumb">
+                    <a href="#"><i class="fas fa-arrow-left"></i> Go to Dashboard</a>
+                </div>
+                <h1>Security Operations Fundamentals</h1>
+            </div>
+        </nav>
+        
+        <div class="course-content">
+
+        <section class="content-section">
+            <h2>Welcome to Security Operations Fundamentals</h2>
+            <p>This learning path will teach you the essential skills needed for security operations and incident response. Master the fundamentals of memory forensics, disk analysis, and network traffic analysis to become a skilled blue team defender.</p>
+            <p>Complete all courses in this learning path to earn your Certified CyberDefender certification.</p>
+        </section>
+        
+        <div class="courses-grid">
+            <div class="course-card">
+                <div class="course-card-header">
+                    <i class="fas fa-memory"></i>
+                    <div class="progress-indicator">
+                        <div class="circle"></div>
+                        <span>2/5 Complete</span>
+                    </div>
+                </div>
+                <h2>Memory Forensics</h2>
+                <p>Learn how to analyze memory dumps to detect malicious processes and understand attack patterns.</p>
+                <div class="course-card-footer">
+                    <a href="courses/memory-forensics/index.html" class="course-button">Continue <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="course-card">
+                <div class="course-card-header">
+                    <i class="fas fa-hdd"></i>
+                    <div class="progress-indicator">
+                        <div class="circle"></div>
+                        <span>1/5 Complete</span>
+                    </div>
+                </div>
+                <h2>Disk Analysis Fundamentals</h2>
+                <p>Master the essentials of disk forensics, file recovery, and artifact analysis.</p>
+                <div class="course-card-footer">
+                    <a href="courses/disk-analysis/index.html" class="course-button">Continue <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="course-card">
+                <div class="course-card-header">
+                    <i class="fas fa-network-wired"></i>
+                    <div class="progress-indicator">
+                        <div class="circle"></div>
+                        <span>0/5 Complete</span>
+                    </div>
+                </div>
+                <h2>Network Traffic Analysis</h2>
+                <p>Learn to analyze network traffic to identify malicious communications and data exfiltration.</p>
+                <div class="course-card-footer">
+                    <a href="courses/network-analysis/index.html" class="course-button">Start <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="course-card">
+                <div class="course-card-header">
+                    <i class="fas fa-file-word"></i>
+                    <div class="progress-indicator">
+                        <div class="circle"></div>
+                        <span>0/4 Complete</span>
+                    </div>
+                </div>
+                <h2>VBA Macro Analysis</h2>
+                <p>Learn to analyze and deobfuscate malicious VBA macros in Office documents.</p>
+                <div class="course-card-footer">
+                    <a href="courses/vba-analysis/index.html" class="course-button">Start <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="course-card">
+                <div class="course-card-header">
+                    <i class="fas fa-code"></i>
+                    <div class="progress-indicator">
+                        <div class="circle"></div>
+                        <span>0/4 Complete</span>
+                    </div>
+                </div>
+                <h2>Code Deobfuscation</h2>
+                <p>Master techniques to deobfuscate JavaScript, PowerShell, and other obfuscated malicious code.</p>
+                <div class="course-card-footer">
+                    <a href="courses/deobfuscation/index.html" class="course-button">Start <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="course-card">
+                <div class="course-card-header">
+                    <i class="fas fa-search"></i>
+                    <div class="progress-indicator">
+                        <div class="circle"></div>
+                        <span>0/5 Complete</span>
+                    </div>
+                </div>
+                <h2>Threat Hunting</h2>
+                <p>Learn proactive techniques to hunt for threats in your environment using various data sources.</p>
+                <div class="course-card-footer">
+                    <a href="courses/threat-hunting/index.html" class="course-button">Start <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="course-card locked">
+                <div class="course-card-header">
+                    <i class="fas fa-file-signature"></i>
+                    <div class="lock-indicator">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                <h2>Windows Event Log Analysis</h2>
+                <p>Learn to analyze Windows event logs to detect and investigate security incidents.</p>
+                <div class="course-card-footer">
+                    <span class="locked-message">Complete previous courses to unlock</span>
+                </div>
+            </div>
+            
+            <div class="course-card locked">
+                <div class="course-card-header">
+                    <i class="fas fa-laptop-code"></i>
+                    <div class="lock-indicator">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                <h2>OSSEC: Detect Webshells</h2>
+                <p>Learn how to use OSSEC to detect and analyze webshells dropped in the Apache root folder.</p>
+                <div class="course-card-footer">
+                    <span class="locked-message">Complete previous courses to unlock</span>
+                </div>
+            </div>
+        </div>
+        
+        <section class="content-section certification-section">
+            <h2><i class="fas fa-certificate"></i> Certified CyberDefender</h2>
+            <div class="progress-bar certification-progress">
+                <div class="progress-fill" style="width: 20%"></div>
+            </div>
+            <p>Complete all courses in this learning path to earn your certification.</p>
+            <div class="certification-details">
+                <div class="cert-detail">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Industry-recognized certification</span>
+                </div>
+                <div class="cert-detail">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Hands-on practical skills</span>
+                </div>
+                <div class="cert-detail">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Real-world scenarios</span>
+                </div>
+            </div>
+        </section>
+    </div>
+    </div>
+</div>
+
+<script>
+const { createApp } = Vue
+
+createApp({
+    data() {
+        return {
+            // Placeholder for any future data
+        }
+    }
+}).mount('#app')
+</script>
+</body>
+</html>
