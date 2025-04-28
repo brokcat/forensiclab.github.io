@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Macros VBA Malveillantes | ForensicLab</title>
+    <title>Advanced Malicious Code Analysis | Digital Forensics Lab</title>
     
     <!-- Polices -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,11 +17,11 @@
     <!-- Notre thème personnalisé (intégré) -->
     <style>
         :root {
-            /* Couleurs de base en mode clair */
-            --primary: #6a3de8; /* Violet principal */
+            /* Base colors in light mode */
+            --primary: #6a3de8; /* Main purple */
             --primary-rgb: 106, 61, 232;
             --primary-hover: #5a2dd8;
-            --primary-light: #e9e3fa;
+            --primary-light: #8a63f7;
             --primary-dark: #4a1db8;
             --secondary: #6c757d;
             --secondary-rgb: 108, 117, 125;
@@ -31,33 +31,33 @@
             --danger: #dc2626;
             --light: #f1f5f9;
             --dark: #1e293b;
-            --body-bg: #f1f5f9;
-            --body-color: #384251;
-            --body-color-rgb: 56, 66, 81;
-            --heading-color: #1e293b;
-            --border-color: #cbd5e1;
-            --card-bg: #ffffff;
-            --sidebar-bg: #ffffff;
-            --sidebar-hover: #e9e3fa;
-            --sidebar-active: #6a3de8;
+            --body-bg: #6a3de8; /* Purple background */
+            --body-color: #ffffff; /* White text */
+            --body-color-rgb: 255, 255, 255;
+            --heading-color: #ffffff; /* White headings */
+            --border-color: #8a63f7;
+            --card-bg: #6a3de8; /* Purple card background */
+            --sidebar-bg: #6a3de8;
+            --sidebar-hover: #9a73ff;
+            --sidebar-active: #ffffff;
         }
         
         [data-theme="dark"] {
-            /* Couleurs en mode sombre */
-            --primary: #8a63f7; /* Violet plus clair pour le mode sombre */
+            /* Colors in dark mode */
+            --primary: #8a63f7; /* Lighter purple for dark mode */
             --primary-rgb: 138, 99, 247;
             --primary-hover: #9a73ff;
-            --primary-light: #2d2145;
+            --primary-light: #9a73ff;
             --primary-dark: #b59aff;
-            --body-bg: #0f172a;
-            --body-color: #9cb2d1;
-            --body-color-rgb: 156, 178, 209;
-            --heading-color: #f1f5f9;
-            --border-color: #334155;
-            --card-bg: #1e293b;
-            --sidebar-bg: #1e293b;
-            --sidebar-hover: #2d2145;
-            --sidebar-active: #8a63f7;
+            --body-bg: #6a3de8; /* Purple background */
+            --body-color: #ffffff; /* White text */
+            --body-color-rgb: 255, 255, 255;
+            --heading-color: #ffffff; /* White headings */
+            --border-color: #9a73ff;
+            --card-bg: #6a3de8; /* Purple card background */
+            --sidebar-bg: #6a3de8;
+            --sidebar-hover: #9a73ff;
+            --sidebar-active: #ffffff;
         }
         
         body {
@@ -147,7 +147,7 @@
         }
         
         .course-section-header {
-            background-color: var(--card-bg);
+            background-color: var(--primary);
             padding: 15px 20px;
             border-bottom: 1px solid var(--border-color);
             cursor: pointer;
@@ -155,7 +155,7 @@
         
         .course-section-content {
             padding: 20px;
-            background-color: var(--body-bg);
+            background-color: var(--card-bg);
         }
         
         /* Barre latérale de navigation du cours */
@@ -176,7 +176,7 @@
         
         .course-nav-item:hover, .course-nav-item.active {
             background-color: var(--primary-light);
-            color: var(--primary);
+            color: var(--primary-dark);
         }
         
         /* Styles pour les détails du cours */
@@ -198,322 +198,179 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="../index.html">
-                <i class="fas fa-shield-alt me-2"></i>ForensicLab
+                <i class="fas fa-shield-alt me-2"></i>Digital Forensics Lab
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Accueil</a>
+                        <a class="nav-link" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="../index.html#courses">Cours</a>
+                        <a class="nav-link" href="../index.html#courses">Courses</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html#progress">Progression</a>
+                        <a class="nav-link" href="../index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#contact">Contact</a>
                     </li>
                 </ul>
-                <div class="d-flex align-items-center">
-                    <button id="theme-toggle" class="btn btn-outline-primary me-2">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    <a href="#" class="btn btn-primary">
-                        <i class="fas fa-user me-1"></i> Mon Compte
-                    </a>
-                </div>
             </div>
         </div>
     </nav>
 
-    <!-- En-tête du cours -->
-    <section class="py-5 bg-primary text-white">
+    <!-- Course Header -->
+    <header class="py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="bg-white rounded-circle p-3 me-3">
-                            <i class="fas fa-file-word fa-2x text-primary"></i>
-                        </div>
-                        <h1 class="fw-bold mb-0">Macros VBA Malveillantes</h1>
+                    <h1 class="fw-bold mb-3">Advanced Malicious Code Analysis</h1>
+                    <div class="d-flex flex-wrap align-items-center mb-3">
+                        <span class="badge bg-primary me-2 mb-2">Advanced</span>
+                        <span class="text-light me-3 mb-2"><i class="far fa-clock me-1"></i> 24 hours</span>
+                        <span class="text-light me-3 mb-2"><i class="fas fa-tasks me-1"></i> 7 labs</span>
+                        <span class="text-light mb-2"><i class="fas fa-signal me-1"></i> Advanced</span>
                     </div>
-                    <div class="d-flex flex-wrap gap-3 mb-4">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-clock me-2"></i>
-                            <span>10 heures</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-flask me-2"></i>
-                            <span>5 labs pratiques</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-signal me-2"></i>
-                            <span>Niveau: <span class="badge bg-danger ms-1">Avancé</span></span>
-                        </div>
+                    <p class="lead mb-4">Investigate malicious VBA macros, scripts, and code used in targeted attacks and advanced persistent threats. Learn to analyze, deobfuscate, and understand the techniques used by threat actors.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <button class="btn btn-primary px-4 py-2" onclick="startCourse()">Start Course</button>
+                        <a href="#modules" class="btn btn-outline-primary px-4 py-2">View Modules</a>
                     </div>
-                    <p class="lead">Apprenez à détecter et analyser les macros VBA malveillantes dans les documents Office pour comprendre les techniques d'attaque.</p>
                 </div>
                 <div class="col-lg-4">
                     <div class="card">
-                        <div class="card-body p-4">
-                            <h5 class="card-title mb-3">Votre progression</h5>
-                            <div class="progress mb-3">
-                                <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Course Progress</h5>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="courseProgressBar"></div>
                             </div>
-                            <div class="d-flex justify-content-between text-white mb-4">
-                                <span>30% complété</span>
-                                <span>1/4 sections</span>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-light" id="progressText">0% Complete</span>
+                                <span class="text-light">0/7 Labs</span>
                             </div>
-                            <button class="btn btn-light w-100">
-                                <i class="fas fa-play-circle me-2"></i>Continuer
-                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Contenu principal -->
-    <section class="py-5">
+    <!-- Course Content -->
+    <section id="modules" class="py-5">
         <div class="container">
-            <div class="row">
-                <!-- Barre latérale -->
-                <div class="col-lg-3 mb-4 mb-lg-0">
-                    <div class="course-sidebar">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title mb-3">Contenu du cours</h5>
-                                <div class="list-group">
-                                    <a href="#section1" class="course-nav-item active">
-                                        <i class="fas fa-check-circle me-2 text-success"></i>
-                                        Introduction aux macros VBA
-                                    </a>
-                                    <a href="#section2" class="course-nav-item">
-                                        <i class="fas fa-circle me-2 text-muted"></i>
-                                        Techniques d'obfuscation
-                                    </a>
-                                    <a href="#section3" class="course-nav-item">
-                                        <i class="fas fa-circle me-2 text-muted"></i>
-                                        Extraction et déobfuscation
-                                    </a>
-                                    <a href="#section4" class="course-nav-item">
-                                        <i class="fas fa-circle me-2 text-muted"></i>
-                                        Analyse dynamique
-                                    </a>
-                                    <a href="#labs" class="course-nav-item">
-                                        <i class="fas fa-flask me-2 text-warning"></i>
-                                        Labs pratiques
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title mb-3">Ressources</h5>
-                                <div class="list-group">
-                                    <a href="#" class="course-nav-item">
-                                        <i class="fas fa-file-pdf me-2"></i>
-                                        Guide de référence VBA
-                                    </a>
-                                    <a href="#" class="course-nav-item">
-                                        <i class="fas fa-download me-2"></i>
-                                        Échantillons de documents
-                                    </a>
-                                    <a href="#" class="course-nav-item">
-                                        <i class="fas fa-external-link-alt me-2"></i>
-                                        Documentation des outils
-                                    </a>
+            <h2 class="fw-bold mb-4">Course Modules</h2>
+            
+            <!-- Module 1 -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title h5 fw-bold">Module 1: Introduction to Malicious Code Analysis</h3>
+                    <p class="card-text">Learn the fundamentals of malicious code analysis and understand how attackers use various scripting languages in targeted attacks.</p>
+                    <div class="accordion" id="module1Accordion">
+                        <div class="accordion-item">
+                            <h4 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#module1Content">
+                                    View Content
+                                </button>
+                            </h4>
+                            <div id="module1Content" class="accordion-collapse collapse" data-bs-parent="#module1Accordion">
+                                <div class="accordion-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-book-open me-2"></i> Malicious Code Overview</span>
+                                            <span class="badge bg-secondary">25 min</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-video me-2"></i> Common Attack Vectors</span>
+                                            <span class="badge bg-secondary">20 min</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-flask me-2"></i> Lab: Setting Up a Malware Analysis Environment</span>
+                                            <span class="badge bg-primary">60 min</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-file-alt me-2"></i> Quiz: Malicious Code Fundamentals</span>
+                                            <span class="badge bg-info">15 min</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Contenu principal -->
-                <div class="col-lg-9">
-                    <!-- Section 1 -->
-                    <div id="section1" class="course-section">
-                        <div class="course-section-header d-flex justify-content-between align-items-center">
-                            <h3 class="mb-0 fs-5">1. Introduction aux macros VBA</h3>
-                            <span class="badge bg-success">Complété</span>
-                        </div>
-                        <div class="course-section-content">
-                            <p>Les macros VBA (Visual Basic for Applications) sont des séquences d'instructions qui automatisent des tâches dans les applications Microsoft Office. Bien qu'elles soient conçues pour améliorer la productivité, elles sont souvent détournées à des fins malveillantes.</p>
-                            
-                            <h5 class="mt-4">Formats de documents Office contenant des macros:</h5>
-                            <ul>
-                                <li><strong>.docm</strong> - Document Word avec macros</li>
-                                <li><strong>.xlsm</strong> - Classeur Excel avec macros</li>
-                                <li><strong>.pptm</strong> - Présentation PowerPoint avec macros</li>
-                                <li><strong>.doc, .xls, .ppt</strong> - Anciens formats Office (pré-2007) pouvant contenir des macros</li>
-                            </ul>
-                            
-                            <h5 class="mt-4">Structure d'un document Office avec macros:</h5>
-                            <p>Les documents Office modernes (OOXML) sont en réalité des archives ZIP contenant plusieurs fichiers XML. Les macros VBA sont stockées dans un flux binaire appelé "VBA Project" à l'intérieur de cette archive.</p>
-                            
-                            <div class="bg-dark text-light p-3 rounded mt-4">
-                                <pre><code># Extraire le contenu d'un document Office
-unzip -d extracted_content document.docm
-
-# Structure typique d'un document Word avec macros
-extracted_content/
-├── [Content_Types].xml
-├── _rels/
-├── docProps/
-├── word/
-│   ├── document.xml
-│   ├── vbaProject.bin  # Contient le code VBA
-│   └── ...
-└── ...</code></pre>
-                            </div>
-                            
-                            <h5 class="mt-4">Vecteurs d'attaque courants:</h5>
-                            <ul>
-                                <li><strong>Phishing</strong> - Documents malveillants envoyés par e-mail</li>
-                                <li><strong>Ingénierie sociale</strong> - Inciter l'utilisateur à activer les macros</li>
-                                <li><strong>Téléchargements drive-by</strong> - Documents téléchargés depuis des sites web compromis</li>
-                                <li><strong>Exploitation de vulnérabilités</strong> - Utilisation de failles dans Office pour exécuter du code sans avertissement</li>
-                            </ul>
-                            
-                            <div class="alert alert-warning mt-4">
-                                <i class="fas fa-exclamation-triangle me-2"></i>
-                                <strong>Attention:</strong> L'analyse de macros malveillantes doit toujours être effectuée dans un environnement isolé pour éviter une infection accidentelle.
+            </div>
+            
+            <!-- Module 2 -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title h5 fw-bold">Module 2: VBA Macro Analysis</h3>
+                    <p class="card-text">Master techniques for analyzing and deobfuscating malicious VBA macros in Office documents.</p>
+                    <div class="accordion" id="module2Accordion">
+                        <div class="accordion-item">
+                            <h4 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#module2Content">
+                                    View Content
+                                </button>
+                            </h4>
+                            <div id="module2Content" class="accordion-collapse collapse" data-bs-parent="#module2Accordion">
+                                <div class="accordion-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-book-open me-2"></i> VBA Macro Structure and Functionality</span>
+                                            <span class="badge bg-secondary">30 min</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-video me-2"></i> Common Obfuscation Techniques</span>
+                                            <span class="badge bg-secondary">25 min</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-video me-2"></i> Tools for VBA Analysis</span>
+                                            <span class="badge bg-secondary">20 min</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-flask me-2"></i> Lab: Analyzing Malicious VBA Macros</span>
+                                            <span class="badge bg-primary">90 min</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Section 2 -->
-                    <div id="section2" class="course-section">
-                        <div class="course-section-header d-flex justify-content-between align-items-center">
-                            <h3 class="mb-0 fs-5">2. Techniques d'obfuscation</h3>
-                            <span class="badge bg-secondary">Non commencé</span>
-                        </div>
-                        <div class="course-section-content">
-                            <p>Cette section sera débloquée une fois que vous aurez terminé les sections précédentes.</p>
-                            <button class="btn btn-primary mt-3">
-                                <i class="fas fa-lock me-2"></i>Débloquer cette section
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Section 3 -->
-                    <div id="section3" class="course-section">
-                        <div class="course-section-header d-flex justify-content-between align-items-center">
-                            <h3 class="mb-0 fs-5">3. Extraction et déobfuscation</h3>
-                            <span class="badge bg-secondary">Non commencé</span>
-                        </div>
-                        <div class="course-section-content">
-                            <p>Cette section sera débloquée une fois que vous aurez terminé les sections précédentes.</p>
-                            <button class="btn btn-primary mt-3">
-                                <i class="fas fa-lock me-2"></i>Débloquer cette section
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Section 4 -->
-                    <div id="section4" class="course-section">
-                        <div class="course-section-header d-flex justify-content-between align-items-center">
-                            <h3 class="mb-0 fs-5">4. Analyse dynamique</h3>
-                            <span class="badge bg-secondary">Non commencé</span>
-                        </div>
-                        <div class="course-section-content">
-                            <p>Cette section sera débloquée une fois que vous aurez terminé les sections précédentes.</p>
-                            <button class="btn btn-primary mt-3">
-                                <i class="fas fa-lock me-2"></i>Débloquer cette section
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Labs pratiques -->
-                    <div id="labs" class="mt-5">
-                        <h3 class="mb-4">Labs pratiques</h3>
-                        
-                        <div class="card lab-card completed mb-3">
-                            <div class="card-body p-4">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="card-title mb-0">Lab 1: Extraction de macros VBA</h5>
-                                    <span class="badge bg-success">Complété</span>
-                                </div>
-                                <p class="card-text mt-2">Apprenez à extraire le code VBA des documents Office en utilisant différents outils.</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <div>
-                                        <span class="badge bg-light text-dark me-2">45 minutes</span>
-                                        <span class="badge bg-light text-dark">Intermédiaire</span>
-                                    </div>
-                                    <a href="#" class="btn btn-sm btn-outline-primary">Revoir</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card lab-card in-progress mb-3">
-                            <div class="card-body p-4">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="card-title mb-0">Lab 2: Analyse de code VBA obfusqué</h5>
-                                    <span class="badge bg-warning">En cours</span>
-                                </div>
-                                <p class="card-text mt-2">Découvrez les techniques courantes d'obfuscation et apprenez à déobfusquer le code VBA malveillant.</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <div>
-                                        <span class="badge bg-light text-dark me-2">60 minutes</span>
-                                        <span class="badge bg-light text-dark">Avancé</span>
-                                    </div>
-                                    <a href="#" class="btn btn-sm btn-primary">Continuer</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card lab-card mb-3">
-                            <div class="card-body p-4">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="card-title mb-0">Lab 3: Analyse statique avec OLEVBA</h5>
-                                    <span class="badge bg-secondary">Non commencé</span>
-                                </div>
-                                <p class="card-text mt-2">Utilisez l'outil OLEVBA pour analyser automatiquement les macros VBA et détecter les indicateurs de compromission.</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <div>
-                                        <span class="badge bg-light text-dark me-2">60 minutes</span>
-                                        <span class="badge bg-light text-dark">Avancé</span>
-                                    </div>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">Commencer</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card lab-card mb-3">
-                            <div class="card-body p-4">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="card-title mb-0">Lab 4: Analyse dynamique en environnement contrôlé</h5>
-                                    <span class="badge bg-secondary">Non commencé</span>
-                                </div>
-                                <p class="card-text mt-2">Exécutez des macros malveillantes dans un environnement sécurisé et analysez leur comportement.</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <div>
-                                        <span class="badge bg-light text-dark me-2">90 minutes</span>
-                                        <span class="badge bg-light text-dark">Expert</span>
-                                    </div>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">Commencer</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card lab-card mb-3">
-                            <div class="card-body p-4">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="card-title mb-0">Lab 5: Challenge d'analyse VBA</h5>
-                                    <span class="badge bg-secondary">Non commencé</span>
-                                </div>
-                                <p class="card-text mt-2">Mettez en pratique toutes vos compétences pour analyser un document Office malveillant complexe.</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <div>
-                                        <span class="badge bg-light text-dark me-2">120 minutes</span>
-                                        <span class="badge bg-light text-dark">Expert</span>
-                                    </div>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">Commencer</a>
+                </div>
+            </div>
+            
+            <!-- Module 3 -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title h5 fw-bold">Module 3: PowerShell and JavaScript Analysis</h3>
+                    <p class="card-text">Learn to analyze malicious PowerShell scripts and JavaScript code used in modern attacks.</p>
+                    <div class="accordion" id="module3Accordion">
+                        <div class="accordion-item">
+                            <h4 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#module3Content">
+                                    View Content
+                                </button>
+                            </h4>
+                            <div id="module3Content" class="accordion-collapse collapse" data-bs-parent="#module3Accordion">
+                                <div class="accordion-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-book-open me-2"></i> PowerShell Attack Techniques</span>
+                                            <span class="badge bg-secondary">35 min</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-video me-2"></i> JavaScript Obfuscation Methods</span>
+                                            <span class="badge bg-secondary">30 min</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-flask me-2"></i> Lab: Deobfuscating PowerShell and JavaScript</span>
+                                            <span class="badge bg-primary">90 min</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -524,20 +381,17 @@ extracted_content/
     </section>
 
     <!-- Footer -->
-    <footer class="py-4 mt-5">
+    <footer class="py-4 border-top">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-md-6">
-                    <a class="navbar-brand mb-3 d-inline-block" href="../index.html">
-                        <i class="fas fa-shield-alt me-2"></i>ForensicLab
-                    </a>
-                    <p class="mb-3">Plateforme de formation complète en forensique numérique avec des cours, des labs et des challenges.</p>
+                    <p class="mb-0">&copy; 2025 Digital Forensics Lab. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-1">© 2025 ForensicLab. Tous droits réservés.</p>
-                    <div>
-                        <a href="#" class="text-decoration-none me-3">Politique de confidentialité</a>
-                        <a href="#" class="text-decoration-none">Conditions d'utilisation</a>
+                    <div class="d-flex gap-3 justify-content-md-end">
+                        <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
@@ -545,41 +399,42 @@ extracted_content/
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Script pour le switch de thème -->
+    <!-- Custom JS -->
     <script>
-        // Fonction pour basculer entre les thèmes clair et sombre
-        function toggleTheme() {
-            const html = document.documentElement;
-            const themeToggle = document.getElementById('theme-toggle');
-            const currentTheme = html.getAttribute('data-theme');
+        // Function to start the course
+        function startCourse() {
+            // Set the first module as active
+            document.querySelector('#module1Content').classList.add('show');
+            document.querySelector('#module1Accordion .accordion-button').classList.remove('collapsed');
             
-            if (currentTheme === 'dark') {
-                html.setAttribute('data-theme', 'light');
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                localStorage.setItem('theme', 'light');
-            } else {
-                html.setAttribute('data-theme', 'dark');
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                localStorage.setItem('theme', 'dark');
-            }
+            // Scroll to the modules section
+            document.querySelector('#modules').scrollIntoView({ behavior: 'smooth' });
+            
+            // Update progress (for demo purposes)
+            updateProgress(5);
         }
         
-        // Initialiser le thème au chargement de la page
+        // Function to update progress
+        function updateProgress(percentage) {
+            const progressBar = document.getElementById('courseProgressBar');
+            const progressText = document.getElementById('progressText');
+            
+            progressBar.style.width = percentage + '%';
+            progressBar.setAttribute('aria-valuenow', percentage);
+            progressText.textContent = percentage + '% Complete';
+            
+            // Save progress to localStorage
+            localStorage.setItem('vbaForensicsProgress', percentage);
+        }
+        
+        // Load saved progress on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('theme');
-            const themeToggle = document.getElementById('theme-toggle');
-            
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-                if (savedTheme === 'light') {
-                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                }
+            const savedProgress = localStorage.getItem('vbaForensicsProgress');
+            if (savedProgress) {
+                updateProgress(parseInt(savedProgress));
             }
-            
-            // Ajouter l'événement de clic au bouton de bascule de thème
-            themeToggle.addEventListener('click', toggleTheme);
         });
     </script>
 </body>

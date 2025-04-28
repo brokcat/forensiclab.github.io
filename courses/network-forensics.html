@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document & PDF Analysis | Digital Forensics Lab</title>
+    <title>Network Forensics & Threat Hunting | Digital Forensics Lab</title>
     
-    <!-- Polices -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     
-    <!-- Notre thème personnalisé (intégré) -->
+    <!-- Custom theme (embedded) -->
     <style>
         :root {
-            /* Couleurs de base en mode clair */
-            --primary: #6a3de8; /* Violet principal */
+            /* Base colors in light mode */
+            --primary: #6a3de8; /* Main purple */
             --primary-rgb: 106, 61, 232;
             --primary-hover: #5a2dd8;
             --primary-light: #8a63f7;
@@ -31,30 +31,30 @@
             --danger: #dc2626;
             --light: #f1f5f9;
             --dark: #1e293b;
-            --body-bg: #6a3de8; /* Fond violet */
-            --body-color: #ffffff; /* Texte blanc */
+            --body-bg: #6a3de8; /* Purple background */
+            --body-color: #ffffff; /* White text */
             --body-color-rgb: 255, 255, 255;
-            --heading-color: #ffffff; /* Titres en blanc */
+            --heading-color: #ffffff; /* White headings */
             --border-color: #8a63f7;
-            --card-bg: #6a3de8; /* Cartes avec fond violet */
+            --card-bg: #6a3de8; /* Purple card background */
             --sidebar-bg: #6a3de8;
             --sidebar-hover: #9a73ff;
             --sidebar-active: #ffffff;
         }
         
         [data-theme="dark"] {
-            /* Couleurs en mode sombre */
-            --primary: #8a63f7; /* Violet plus clair pour le mode sombre */
+            /* Colors in dark mode */
+            --primary: #8a63f7; /* Lighter purple for dark mode */
             --primary-rgb: 138, 99, 247;
             --primary-hover: #9a73ff;
             --primary-light: #9a73ff;
             --primary-dark: #b59aff;
-            --body-bg: #6a3de8; /* Fond violet */
-            --body-color: #ffffff; /* Texte blanc */
+            --body-bg: #6a3de8; /* Purple background */
+            --body-color: #ffffff; /* White text */
             --body-color-rgb: 255, 255, 255;
-            --heading-color: #ffffff; /* Titres en blanc */
+            --heading-color: #ffffff; /* White headings */
             --border-color: #9a73ff;
-            --card-bg: #6a3de8; /* Cartes avec fond violet */
+            --card-bg: #6a3de8; /* Purple card background */
             --sidebar-bg: #6a3de8;
             --sidebar-hover: #9a73ff;
             --sidebar-active: #ffffff;
@@ -66,127 +66,108 @@
             font-family: 'Inter', sans-serif;
         }
         
-        /* Styles pour la navbar */
+        /* Navbar styles */
         .navbar {
-            background-color: var(--card-bg);
+            background-color: var(--primary);
             border-bottom: 1px solid var(--border-color);
         }
         
         .navbar-brand {
-            color: var(--primary);
+            color: #ffffff;
             font-weight: 600;
         }
         
         .nav-link {
-            color: var(--body-color);
+            color: #ffffff;
             font-weight: 500;
         }
         
         .nav-link.active, .nav-link:hover {
+            color: var(--light);
+        }
+        
+        /* Button styles */
+        .btn-primary {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+        
+        .btn-outline-primary {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: #ffffff;
             color: var(--primary);
         }
         
-        /* Styles pour les badges de difficulté */
-        .badge-beginner {
-            background-color: #4ade80;
-            color: #064e3b;
+        /* Section styles */
+        .bg-light {
+            background-color: var(--primary) !important;
         }
         
-        .badge-intermediate {
-            background-color: #facc15;
-            color: #713f12;
+        [data-theme="dark"] .bg-light {
+            background-color: var(--primary) !important;
         }
         
-        .badge-advanced {
-            background-color: #f97316;
-            color: #7c2d12;
+        .bg-primary {
+            background-color: var(--primary-dark) !important;
         }
         
-        /* Styles pour la progression */
-        .progress {
-            height: 10px;
-            background-color: var(--border-color);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .progress-bar {
-            background-color: var(--primary);
-            border-radius: 10px;
-        }
-        
-        /* Styles pour les labs */
-        .lab-card {
-            border-left: 4px solid var(--primary);
-            transition: transform 0.2s;
-        }
-        
-        .lab-card:hover {
-            transform: translateX(5px);
-        }
-        
-        .lab-card.completed {
-            border-left-color: #38a169;
-        }
-        
-        .lab-card.in-progress {
-            border-left-color: #f39c12;
-        }
-        
-        /* Styles pour les sections du cours */
-        .course-section {
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        
-        .course-section-header {
-            background-color: var(--primary);
-            padding: 15px 20px;
-            border-bottom: 1px solid var(--border-color);
-            cursor: pointer;
-        }
-        
-        .course-section-content {
-            padding: 20px;
-            background-color: var(--card-bg);
-        }
-        
-        /* Barre latérale de navigation du cours */
-        .course-sidebar {
-            position: sticky;
-            top: 20px;
-        }
-        
-        .course-nav-item {
-            padding: 10px 15px;
-            border-radius: 6px;
-            margin-bottom: 5px;
-            color: var(--body-color);
-            display: block;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-        
-        .course-nav-item:hover, .course-nav-item.active {
+        /* Card styles */
+        .card {
             background-color: var(--primary-light);
-            color: var(--primary-dark);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        /* Styles pour les détails du cours */
-        .course-detail {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.1);
+        }
+        
+        .card-title {
+            color: var(--heading-color);
+            font-weight: 600;
+        }
+        
+        /* Progress bar styles */
+        .progress {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Accordion styles */
+        .accordion-item {
+            background-color: var(--primary-light);
+            border: 1px solid var(--border-color);
+        }
+        
+        .accordion-button {
+            background-color: var(--primary-light);
             color: var(--body-color);
         }
         
-        .course-detail i {
-            margin-right: 8px;
-            color: var(--primary);
-            width: 20px;
-            text-align: center;
+        .accordion-button:not(.collapsed) {
+            background-color: var(--primary);
+            color: var(--body-color);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--border-color);
+        }
+        
+        /* List group styles */
+        .list-group-item {
+            background-color: var(--primary-light);
+            color: var(--body-color);
+            border-color: var(--border-color);
         }
     </style>
 </head>
@@ -219,19 +200,19 @@
         </div>
     </nav>
 
-    <!-- En-tête du cours -->
+    <!-- Course Header -->
     <header class="py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <h1 class="fw-bold mb-3">Document & PDF Analysis</h1>
+                    <h1 class="fw-bold mb-3">Network Forensics & Threat Hunting</h1>
                     <div class="d-flex flex-wrap align-items-center mb-3">
-                        <span class="badge bg-primary me-2 mb-2">Intermediate</span>
-                        <span class="text-light me-3 mb-2"><i class="far fa-clock me-1"></i> 16 hours</span>
-                        <span class="text-light me-3 mb-2"><i class="fas fa-tasks me-1"></i> 6 labs</span>
-                        <span class="text-light mb-2"><i class="fas fa-signal me-1"></i> Intermediate</span>
+                        <span class="badge bg-primary me-2 mb-2">Advanced</span>
+                        <span class="text-light me-3 mb-2"><i class="far fa-clock me-1"></i> 24 hours</span>
+                        <span class="text-light me-3 mb-2"><i class="fas fa-tasks me-1"></i> 8 labs</span>
+                        <span class="text-light mb-2"><i class="fas fa-signal me-1"></i> Advanced</span>
                     </div>
-                    <p class="lead mb-4">Learn techniques to analyze malicious PDF documents, extract hidden data, and identify document-based attack vectors. Master tools for analyzing document metadata, embedded objects, and malicious scripts.</p>
+                    <p class="lead mb-4">Learn to analyze network traffic, detect anomalies, and hunt for threats using packet capture analysis and network monitoring tools. Master techniques for investigating network-based attacks and data exfiltration.</p>
                     <div class="d-flex flex-wrap gap-3">
                         <button class="btn btn-primary px-4 py-2" onclick="startCourse()">Start Course</button>
                         <a href="#modules" class="btn btn-outline-primary px-4 py-2">View Modules</a>
@@ -246,7 +227,7 @@
                             </div>
                             <div class="d-flex justify-content-between">
                                 <span class="text-light" id="progressText">0% Complete</span>
-                                <span class="text-light">0/6 Labs</span>
+                                <span class="text-light">0/8 Labs</span>
                             </div>
                         </div>
                     </div>
@@ -255,7 +236,7 @@
         </div>
     </header>
 
-    <!-- Contenu principal -->
+    <!-- Course Content -->
     <section id="modules" class="py-5">
         <div class="container">
             <h2 class="fw-bold mb-4">Course Modules</h2>
@@ -263,8 +244,8 @@
             <!-- Module 1 -->
             <div class="card mb-4">
                 <div class="card-body">
-                    <h3 class="card-title h5 fw-bold">Module 1: Introduction to Document Analysis</h3>
-                    <p class="card-text">Learn the fundamentals of document analysis and why PDFs are a common attack vector in targeted attacks.</p>
+                    <h3 class="card-title h5 fw-bold">Module 1: Network Traffic Analysis Fundamentals</h3>
+                    <p class="card-text">Learn the core principles of network forensics and packet analysis for security investigations.</p>
                     <div class="accordion" id="module1Accordion">
                         <div class="accordion-item">
                             <h4 class="accordion-header">
@@ -276,20 +257,20 @@
                                 <div class="accordion-body">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span><i class="fas fa-book-open me-2"></i> Document Analysis Overview</span>
-                                            <span class="badge bg-secondary">20 min</span>
+                                            <span><i class="fas fa-book-open me-2"></i> Network Protocols and OSI Model Review</span>
+                                            <span class="badge bg-secondary">30 min</span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span><i class="fas fa-video me-2"></i> PDF Structure and Format</span>
+                                            <span><i class="fas fa-video me-2"></i> Packet Capture Methods and Tools</span>
                                             <span class="badge bg-secondary">25 min</span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span><i class="fas fa-flask me-2"></i> Lab: PDF Structure Analysis</span>
-                                            <span class="badge bg-primary">45 min</span>
+                                            <span><i class="fas fa-flask me-2"></i> Lab: Setting Up a Network Capture Environment</span>
+                                            <span class="badge bg-primary">60 min</span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span><i class="fas fa-file-alt me-2"></i> Quiz: PDF Fundamentals</span>
-                                            <span class="badge bg-info">10 min</span>
+                                            <span><i class="fas fa-file-alt me-2"></i> Quiz: Network Forensics Fundamentals</span>
+                                            <span class="badge bg-info">15 min</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -302,8 +283,8 @@
             <!-- Module 2 -->
             <div class="card mb-4">
                 <div class="card-body">
-                    <h3 class="card-title h5 fw-bold">Module 2: PDF Metadata Analysis</h3>
-                    <p class="card-text">Master techniques for extracting and analyzing document metadata to identify authorship and creation details.</p>
+                    <h3 class="card-title h5 fw-bold">Module 2: Wireshark for Network Forensics</h3>
+                    <p class="card-text">Master Wireshark for deep packet inspection and forensic analysis of network traffic.</p>
                     <div class="accordion" id="module2Accordion">
                         <div class="accordion-item">
                             <h4 class="accordion-header">
@@ -315,20 +296,20 @@
                                 <div class="accordion-body">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span><i class="fas fa-book-open me-2"></i> Understanding Document Metadata</span>
-                                            <span class="badge bg-secondary">20 min</span>
+                                            <span><i class="fas fa-book-open me-2"></i> Advanced Wireshark Features</span>
+                                            <span class="badge bg-secondary">35 min</span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span><i class="fas fa-video me-2"></i> Tools for Metadata Extraction</span>
-                                            <span class="badge bg-secondary">15 min</span>
+                                            <span><i class="fas fa-video me-2"></i> Display Filters and Search Techniques</span>
+                                            <span class="badge bg-secondary">30 min</span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span><i class="fas fa-flask me-2"></i> Lab: Metadata Extraction and Analysis</span>
-                                            <span class="badge bg-primary">60 min</span>
+                                            <span><i class="fas fa-video me-2"></i> Protocol Analysis and Decryption</span>
+                                            <span class="badge bg-secondary">25 min</span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span><i class="fas fa-file-alt me-2"></i> Quiz: Metadata Analysis</span>
-                                            <span class="badge bg-info">10 min</span>
+                                            <span><i class="fas fa-flask me-2"></i> Lab: Analyzing Malicious Traffic with Wireshark</span>
+                                            <span class="badge bg-primary">90 min</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -341,8 +322,8 @@
             <!-- Module 3 -->
             <div class="card mb-4">
                 <div class="card-body">
-                    <h3 class="card-title h5 fw-bold">Module 3: Analyzing Malicious PDFs</h3>
-                    <p class="card-text">Learn to identify and analyze malicious content in PDF documents, including JavaScript, embedded objects, and exploits.</p>
+                    <h3 class="card-title h5 fw-bold">Module 3: Detecting Network-Based Attacks</h3>
+                    <p class="card-text">Learn to identify common network-based attacks and intrusion patterns in packet captures.</p>
                     <div class="accordion" id="module3Accordion">
                         <div class="accordion-item">
                             <h4 class="accordion-header">
@@ -354,16 +335,51 @@
                                 <div class="accordion-body">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span><i class="fas fa-book-open me-2"></i> Common PDF Attack Vectors</span>
+                                            <span><i class="fas fa-book-open me-2"></i> Common Network Attack Patterns</span>
+                                            <span class="badge bg-secondary">40 min</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-video me-2"></i> Data Exfiltration Techniques</span>
                                             <span class="badge bg-secondary">30 min</span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span><i class="fas fa-video me-2"></i> JavaScript Analysis in PDFs</span>
-                                            <span class="badge bg-secondary">25 min</span>
+                                            <span><i class="fas fa-flask me-2"></i> Lab: Identifying C2 Traffic and Data Exfiltration</span>
+                                            <span class="badge bg-primary">90 min</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title h5 fw-bold">Module 4: Network Threat Hunting</h3>
+                    <p class="card-text">Advanced techniques for proactively hunting for threats in network traffic and identifying anomalies.</p>
+                    <div class="accordion" id="module4Accordion">
+                        <div class="accordion-item">
+                            <h4 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#module4Content">
+                                    View Content
+                                </button>
+                            </h4>
+                            <div id="module4Content" class="accordion-collapse collapse" data-bs-parent="#module4Accordion">
+                                <div class="accordion-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-book-open me-2"></i> Threat Hunting Methodologies</span>
+                                            <span class="badge bg-secondary">35 min</span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span><i class="fas fa-flask me-2"></i> Lab: Analyzing Malicious JavaScript in PDFs</span>
-                                            <span class="badge bg-primary">90 min</span>
+                                            <span><i class="fas fa-video me-2"></i> Network Baselining and Anomaly Detection</span>
+                                            <span class="badge bg-secondary">30 min</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="fas fa-flask me-2"></i> Lab: Network Threat Hunting Exercise</span>
+                                            <span class="badge bg-primary">120 min</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -421,12 +437,12 @@
             progressText.textContent = percentage + '% Complete';
             
             // Save progress to localStorage
-            localStorage.setItem('pdfForensicsProgress', percentage);
+            localStorage.setItem('networkForensicsProgress', percentage);
         }
         
         // Load saved progress on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const savedProgress = localStorage.getItem('pdfForensicsProgress');
+            const savedProgress = localStorage.getItem('networkForensicsProgress');
             if (savedProgress) {
                 updateProgress(parseInt(savedProgress));
             }

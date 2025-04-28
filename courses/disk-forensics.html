@@ -31,15 +31,15 @@
             --danger: #dc2626;
             --light: #f1f5f9;
             --dark: #1e293b;
-            --body-bg: #f1f5f9;
-            --body-color: #384251;
-            --body-color-rgb: 56, 66, 81;
-            --heading-color: #1e293b;
-            --border-color: #cbd5e1;
-            --card-bg: #ffffff;
-            --sidebar-bg: #ffffff;
-            --sidebar-hover: #e9e3fa;
-            --sidebar-active: #6a3de8;
+            --body-bg: #6a3de8; /* Fond violet */
+            --body-color: #ffffff; /* Texte blanc */
+            --body-color-rgb: 255, 255, 255;
+            --heading-color: #ffffff; /* Titres en blanc */
+            --border-color: #8a63f7;
+            --card-bg: #8a63f7; /* Cartes avec fond violet plus clair */
+            --sidebar-bg: #8a63f7;
+            --sidebar-hover: #9a73ff;
+            --sidebar-active: #ffffff;
         }
         
         [data-theme="dark"] {
@@ -47,17 +47,17 @@
             --primary: #8a63f7; /* Violet plus clair pour le mode sombre */
             --primary-rgb: 138, 99, 247;
             --primary-hover: #9a73ff;
-            --primary-light: #2d2145;
+            --primary-light: #9a73ff;
             --primary-dark: #b59aff;
-            --body-bg: #0f172a;
-            --body-color: #9cb2d1;
-            --body-color-rgb: 156, 178, 209;
-            --heading-color: #f1f5f9;
-            --border-color: #334155;
-            --card-bg: #1e293b;
-            --sidebar-bg: #1e293b;
-            --sidebar-hover: #2d2145;
-            --sidebar-active: #8a63f7;
+            --body-bg: #6a3de8; /* Fond violet */
+            --body-color: #ffffff; /* Texte blanc */
+            --body-color-rgb: 255, 255, 255;
+            --heading-color: #ffffff; /* Titres en blanc */
+            --border-color: #9a73ff;
+            --card-bg: #8a63f7; /* Cartes avec fond violet plus clair */
+            --sidebar-bg: #8a63f7;
+            --sidebar-hover: #9a73ff;
+            --sidebar-active: #ffffff;
         }
         
         body {
@@ -142,7 +142,7 @@
         }
         
         .course-section-header {
-            background-color: var(--card-bg);
+            background-color: var(--primary);
             padding: 15px 20px;
             border-bottom: 1px solid var(--border-color);
             cursor: pointer;
@@ -150,7 +150,7 @@
         
         .course-section-content {
             padding: 20px;
-            background-color: var(--body-bg);
+            background-color: var(--card-bg);
         }
         
         /* Barre latérale de navigation du cours */
@@ -171,7 +171,7 @@
         
         .course-nav-item:hover, .course-nav-item.active {
             background-color: var(--primary-light);
-            color: var(--primary);
+            color: var(--primary-dark);
         }
         
         /* Styles pour les détails du cours */
@@ -533,7 +533,7 @@
                     <p class="mb-3">Plateforme de formation complète en forensique numérique avec des cours, des labs et des challenges.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-1">© 2025 ForensicLab. Tous droits réservés.</p>
+                    <p class="mb-1"> 2025 ForensicLab. Tous droits réservés.</p>
                     <div>
                         <a href="#" class="text-decoration-none me-3">Politique de confidentialité</a>
                         <a href="#" class="text-decoration-none">Conditions d'utilisation</a>

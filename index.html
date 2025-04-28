@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ForensicLab | Plateforme de Formation en Investigation Numérique</title>
+    <title>Digital Forensics Lab - Professional Training Platform</title>
     
     <!-- Polices -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
             --primary: #6a3de8; /* Violet principal */
             --primary-rgb: 106, 61, 232;
             --primary-hover: #5a2dd8;
-            --primary-light: #e9e3fa;
+            --primary-light: #8a63f7;
             --primary-dark: #4a1db8;
             --secondary: #6c757d;
             --secondary-rgb: 108, 117, 125;
@@ -31,15 +31,15 @@
             --danger: #dc2626;
             --light: #f1f5f9;
             --dark: #1e293b;
-            --body-bg: #f1f5f9;
-            --body-color: #384251;
-            --body-color-rgb: 56, 66, 81;
-            --heading-color: #1e293b;
-            --border-color: #cbd5e1;
-            --card-bg: #ffffff;
-            --sidebar-bg: #ffffff;
-            --sidebar-hover: #e9e3fa;
-            --sidebar-active: #6a3de8;
+            --body-bg: #6a3de8; /* Fond violet */
+            --body-color: #ffffff; /* Texte blanc */
+            --body-color-rgb: 255, 255, 255;
+            --heading-color: #ffffff; /* Titres en blanc */
+            --border-color: #8a63f7;
+            --card-bg: #6a3de8; /* Cartes avec fond violet plus clair */
+            --sidebar-bg: #6a3de8;
+            --sidebar-hover: #9a73ff;
+            --sidebar-active: #ffffff;
         }
         
         [data-theme="dark"] {
@@ -47,17 +47,17 @@
             --primary: #8a63f7; /* Violet plus clair pour le mode sombre */
             --primary-rgb: 138, 99, 247;
             --primary-hover: #9a73ff;
-            --primary-light: #2d2145;
+            --primary-light: #9a73ff;
             --primary-dark: #b59aff;
-            --body-bg: #0f172a;
-            --body-color: #9cb2d1;
-            --body-color-rgb: 156, 178, 209;
-            --heading-color: #f1f5f9;
-            --border-color: #334155;
-            --card-bg: #1e293b;
-            --sidebar-bg: #1e293b;
-            --sidebar-hover: #2d2145;
-            --sidebar-active: #8a63f7;
+            --body-bg: #6a3de8; /* Fond violet */
+            --body-color: #ffffff; /* Texte blanc */
+            --body-color-rgb: 255, 255, 255;
+            --heading-color: #ffffff; /* Titres en blanc */
+            --border-color: #9a73ff;
+            --card-bg: #6a3de8; /* Cartes avec fond violet plus clair */
+            --sidebar-bg: #6a3de8;
+            --sidebar-hover: #9a73ff;
+            --sidebar-active: #ffffff;
         }
         
         body {
@@ -138,28 +138,28 @@
         
         /* Styles pour la navbar */
         .navbar {
-            background-color: var(--card-bg);
+            background-color: var(--primary);
             border-bottom: 1px solid var(--border-color);
         }
         
         .navbar-brand {
-            color: var(--primary);
+            color: #ffffff;
             font-weight: 600;
         }
         
         .nav-link {
-            color: var(--body-color);
+            color: #ffffff;
             font-weight: 500;
         }
         
         .nav-link.active, .nav-link:hover {
-            color: var(--primary);
+            color: var(--light);
         }
         
         /* Styles pour les boutons */
         .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
         }
         
         .btn-primary:hover {
@@ -168,47 +168,43 @@
         }
         
         .btn-outline-primary {
-            color: var(--primary);
-            border-color: var(--primary);
+            color: #ffffff;
+            border-color: #ffffff;
         }
         
         .btn-outline-primary:hover {
-            background-color: var(--primary);
-            color: white;
+            background-color: #ffffff;
+            color: var(--primary);
         }
         
         /* Styles pour les sections */
         .bg-light {
-            background-color: var(--light);
+            background-color: var(--primary) !important;
         }
         
         [data-theme="dark"] .bg-light {
-            background-color: var(--dark);
+            background-color: var(--primary) !important;
         }
         
         .bg-primary {
-            background-color: var(--primary) !important;
+            background-color: var(--primary-dark) !important;
         }
         
         /* Styles pour les cartes */
         .card {
-            background-color: var(--card-bg);
+            background-color: var(--primary-light);
             border: 1px solid var(--border-color);
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.1);
         }
         
-        .card-header {
-            background-color: transparent;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .text-primary {
-            color: var(--primary) !important;
+        .card-title {
+            color: var(--heading-color);
+            font-weight: 600;
         }
         
         /* Styles pour le footer */
@@ -310,7 +306,7 @@
         }
     </style>
     
-    <meta name="description" content="Plateforme de formation complète en forensique numérique avec des cours, des labs et des challenges">
+    <meta name="description" content="Professional training platform for digital forensics and incident response">
 </head>
 <body>
     <!-- Overlay flou qui couvre toute la page -->
@@ -328,347 +324,236 @@
     <!-- Barre de navigation -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <i class="fas fa-shield-alt me-2"></i>
-                <span>ForensicLab</span>
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shield-alt me-2"></i>Digital Forensics Lab
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Accueil</a>
+                        <a class="nav-link active" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="courses.html">Cours</a>
+                        <a class="nav-link" href="#courses">Courses</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="labs.html">Labs</a>
+                        <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="challenges.html">Challenges</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="community.html">Communauté</a>
+                        <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
-                <div class="d-flex align-items-center">
-                    <!-- Switch de thème -->
-                    <div class="theme-toggle me-3">
-                        <label class="theme-switch">
-                            <input type="checkbox" id="theme-toggle-checkbox" onclick="toggleTheme()">
-                            <span class="slider">
-                                <i class="fas fa-sun"></i>
-                                <i class="fas fa-moon"></i>
-                            </span>
-                        </label>
-                    </div>
-                    <button class="btn btn-outline-primary me-2">Se connecter</button>
-                    <button class="btn btn-primary">S'inscrire</button>
-                </div>
             </div>
         </div>
     </nav>
-    
-    <!-- Section Hero -->
-    <section class="py-5 bg-light">
+
+    <!-- Hero Section -->
+    <section class="py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="display-5 fw-bold mb-3">Devenez un expert en investigation numérique</h1>
-                    <p class="lead mb-4">Apprenez les techniques d'analyse forensique avec notre plateforme complète de formation. Des cours structurés, des labs pratiques et des challenges réalistes.</p>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <button class="btn btn-primary btn-lg px-4 me-md-2">Commencer gratuitement</button>
-                        <button class="btn btn-outline-primary btn-lg px-4">Voir les cours</button>
+                    <h1 class="display-4 fw-bold mb-4">Master Digital Forensics Skills</h1>
+                    <p class="lead mb-4">Comprehensive training platform for cybersecurity professionals. Learn industry-standard techniques and tools used in digital forensic investigations.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#courses" class="btn btn-primary px-4 py-2">Start Learning</a>
+                        <a href="#about" class="btn btn-outline-primary px-4 py-2">Learn More</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="assets/images/hero-image.svg" class="img-fluid" alt="Forensic Investigation">
+                    <img src="assets/images/hero-image.png" alt="Digital Forensics" class="img-fluid rounded-3 shadow-lg">
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Section Parcours d'apprentissage -->
-    <section class="py-5">
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-5">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Parcours d'apprentissage</h2>
-                <p class="lead">Suivez notre parcours structuré pour maîtriser les compétences essentielles</p>
+            <div class="row mb-5">
+                <div class="col-lg-6 mx-auto text-center">
+                    <h2 class="fw-bold mb-3">Our Courses</h2>
+                    <p class="lead">Explore our comprehensive digital forensics curriculum designed by industry experts.</p>
+                </div>
             </div>
-            
             <div class="row g-4">
-                <!-- Carte de parcours 1 -->
+                <!-- Course 1 -->
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100">
-                        <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-memory text-primary me-2"></i>
-                            <h5 class="card-title mb-0">Analyse de Mémoire</h5>
-                        </div>
                         <div class="card-body">
-                            <p class="card-text">Apprenez à extraire et analyser les données de la mémoire volatile pour détecter les logiciels malveillants et comprendre les attaques.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="progress w-75">
-                                    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <span class="badge bg-primary">5 modules</span>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-transparent border-0">
-                            <a href="courses/memory-forensics.html" class="btn btn-outline-primary w-100">Commencer</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Carte de parcours 2 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-hdd text-primary me-2"></i>
-                            <h5 class="card-title mb-0">Analyse de Disque</h5>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">Maîtrisez les techniques d'analyse de disque, de récupération de fichiers et d'examen des artefacts système.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="progress w-75">
-                                    <div class="progress-bar" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <span class="badge bg-primary">6 modules</span>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-transparent border-0">
-                            <a href="courses/disk-analysis.html" class="btn btn-outline-primary w-100">Commencer</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Carte de parcours 3 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-network-wired text-primary me-2"></i>
-                            <h5 class="card-title mb-0">Analyse de Trafic Réseau</h5>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">Apprenez à analyser les captures de trafic réseau pour identifier les communications malveillantes et l'exfiltration de données.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="progress w-75">
-                                    <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <span class="badge bg-primary">4 modules</span>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-transparent border-0">
-                            <a href="courses/network-analysis.html" class="btn btn-outline-primary w-100">Commencer</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Section Labs Pratiques -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Labs Pratiques</h2>
-                <p class="lead">Mettez en pratique vos connaissances avec nos environnements de lab interactifs</p>
-            </div>
-            
-            <div class="row g-4">
-                <!-- Lab 1 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <img src="assets/images/lab-memory.jpg" class="card-img-top" alt="Memory Analysis Lab">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h5 class="card-title mb-0">Analyse de Processus Malveillants</h5>
-                                <span class="badge bg-secondary">Débutant</span>
-                            </div>
-                            <p class="card-text">Analysez un dump mémoire pour identifier les processus malveillants et comprendre leur comportement.</p>
-                        </div>
-                        <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center">
-                            <span class="text-muted"><i class="far fa-clock me-1"></i> 45 min</span>
-                            <a href="labs/malicious-process.html" class="btn btn-sm btn-primary">Démarrer le lab</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Lab 2 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <img src="assets/images/lab-disk.jpg" class="card-img-top" alt="Disk Analysis Lab">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h5 class="card-title mb-0">Récupération de Fichiers Supprimés</h5>
-                                <span class="badge bg-secondary">Intermédiaire</span>
-                            </div>
-                            <p class="card-text">Récupérez des fichiers supprimés à partir d'une image disque et analysez leur contenu.</p>
-                        </div>
-                        <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center">
-                            <span class="text-muted"><i class="far fa-clock me-1"></i> 60 min</span>
-                            <a href="labs/file-recovery.html" class="btn btn-sm btn-primary">Démarrer le lab</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Lab 3 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <img src="assets/images/lab-network.jpg" class="card-img-top" alt="Network Analysis Lab">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h5 class="card-title mb-0">Détection d'Exfiltration de Données</h5>
-                                <span class="badge bg-secondary">Avancé</span>
-                            </div>
-                            <p class="card-text">Analysez une capture réseau pour identifier et documenter une exfiltration de données sensibles.</p>
-                        </div>
-                        <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center">
-                            <span class="text-muted"><i class="far fa-clock me-1"></i> 90 min</span>
-                            <a href="labs/data-exfiltration.html" class="btn btn-sm btn-primary">Démarrer le lab</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Section Challenges -->
-    <section class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Challenges Forensiques</h2>
-                <p class="lead">Testez vos compétences avec nos challenges réalistes</p>
-            </div>
-            
-            <div class="row g-4">
-                <!-- Challenge 1 -->
-                <div class="col-md-6">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="card-title mb-0">MemoryMaze</h5>
-                                <div>
-                                    <span class="badge bg-primary me-1">Mémoire</span>
-                                    <span class="badge bg-secondary">Intermédiaire</span>
-                                </div>
-                            </div>
-                            <p class="card-text">Un malware a infecté le système. Analysez le dump mémoire pour identifier le vecteur d'infection, les IOCs et les actions effectuées.</p>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <div>
-                                    <span class="text-muted"><i class="fas fa-users me-1"></i> 245 participants</span>
-                                </div>
-                                <a href="challenges/memory-maze.html" class="btn btn-sm btn-outline-primary">Voir le challenge</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Challenge 2 -->
-                <div class="col-md-6">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="card-title mb-0">NetworkNinja</h5>
-                                <div>
-                                    <span class="badge bg-primary me-1">Réseau</span>
-                                    <span class="badge bg-secondary">Avancé</span>
-                                </div>
-                            </div>
-                            <p class="card-text">Une attaque APT a été détectée. Analysez les captures réseau pour reconstruire la chronologie de l'attaque et identifier les systèmes compromis.</p>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <div>
-                                    <span class="text-muted"><i class="fas fa-users me-1"></i> 178 participants</span>
-                                </div>
-                                <a href="challenges/network-ninja.html" class="btn btn-sm btn-outline-primary">Voir le challenge</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Section Témoignages -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Ce que disent nos apprenants</h2>
-                <p class="lead">Découvrez les expériences de notre communauté</p>
-            </div>
-            
-            <div class="row g-4">
-                <!-- Témoignage 1 -->
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
+                            <h5 class="card-title">Memory Forensics & Malware Analysis</h5>
                             <div class="d-flex align-items-center mb-3">
-                                <div class="flex-shrink-0">
-                                    <img src="assets/images/testimonial-1.jpg" class="rounded-circle" width="50" height="50" alt="User">
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h6 class="mb-0">Sophie Martin</h6>
-                                    <p class="text-muted mb-0">Analyste SOC</p>
-                                </div>
+                                <span class="badge bg-primary me-2">Advanced</span>
+                                <span class="text-light"><i class="far fa-clock me-1"></i> 24 hours</span>
                             </div>
-                            <p class="card-text">"Les labs pratiques m'ont permis d'acquérir des compétences concrètes que j'utilise quotidiennement dans mon travail. La qualité du contenu est exceptionnelle."</p>
-                            <div class="text-warning">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                            <p class="card-text">Learn advanced memory acquisition and analysis techniques to detect sophisticated malware and APT activity in system memory.</p>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-light">0% Complete</span>
+                                <a href="courses/memory-forensics.html" class="btn btn-primary">Start Course</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Témoignage 2 -->
-                <div class="col-md-4">
+                <!-- Course 2 -->
+                <div class="col-md-6 col-lg-4">
                     <div class="card h-100">
                         <div class="card-body">
+                            <h5 class="card-title">Disk & File System Forensics</h5>
                             <div class="d-flex align-items-center mb-3">
-                                <div class="flex-shrink-0">
-                                    <img src="assets/images/testimonial-2.jpg" class="rounded-circle" width="50" height="50" alt="User">
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h6 class="mb-0">Thomas Dubois</h6>
-                                    <p class="text-muted mb-0">Consultant Cybersécurité</p>
-                                </div>
+                                <span class="badge bg-primary me-2">Intermediate</span>
+                                <span class="text-light"><i class="far fa-clock me-1"></i> 20 hours</span>
                             </div>
-                            <p class="card-text">"Les challenges sont incroyablement bien conçus et reflètent des scénarios d'attaque réels. J'ai énormément progressé grâce à cette plateforme."</p>
-                            <div class="text-warning">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
+                            <p class="card-text">Master techniques for analyzing disk images, file systems, and recovering deleted data across various storage media.</p>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-light">0% Complete</span>
+                                <a href="courses/disk-forensics.html" class="btn btn-primary">Start Course</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Témoignage 3 -->
-                <div class="col-md-4">
+                <!-- Course 3 -->
+                <div class="col-md-6 col-lg-4">
                     <div class="card h-100">
                         <div class="card-body">
+                            <h5 class="card-title">Document & PDF Analysis</h5>
                             <div class="d-flex align-items-center mb-3">
-                                <div class="flex-shrink-0">
-                                    <img src="assets/images/testimonial-3.jpg" class="rounded-circle" width="50" height="50" alt="User">
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h6 class="mb-0">Julie Leroy</h6>
-                                    <p class="text-muted mb-0">Étudiante en Cybersécurité</p>
-                                </div>
+                                <span class="badge bg-primary me-2">Intermediate</span>
+                                <span class="text-light"><i class="far fa-clock me-1"></i> 16 hours</span>
                             </div>
-                            <p class="card-text">"En tant qu'étudiante, cette plateforme a été une ressource inestimable pour compléter ma formation académique avec des compétences pratiques."</p>
-                            <div class="text-warning">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                            <p class="card-text">Learn techniques to analyze malicious PDF documents, extract hidden data, and identify document-based attack vectors.</p>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-light">0% Complete</span>
+                                <a href="courses/pdf-forensics.html" class="btn btn-primary">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Advanced Malicious Code Analysis</h5>
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="badge bg-primary me-2">Advanced</span>
+                                <span class="text-light"><i class="far fa-clock me-1"></i> 24 hours</span>
+                            </div>
+                            <p class="card-text">Investigate malicious VBA macros, scripts, and code used in targeted attacks and advanced persistent threats.</p>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-light">0% Complete</span>
+                                <a href="courses/vba-forensics.html" class="btn btn-primary">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Mobile Device Forensics</h5>
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="badge bg-primary me-2">Intermediate</span>
+                                <span class="text-light"><i class="far fa-clock me-1"></i> 20 hours</span>
+                            </div>
+                            <p class="card-text">Learn techniques for acquiring and analyzing data from Android, iOS, and other mobile platforms in forensic investigations.</p>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-light">0% Complete</span>
+                                <a href="courses/android-forensics.html" class="btn btn-primary">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Linux Forensics & Incident Response</h5>
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="badge bg-primary me-2">Advanced</span>
+                                <span class="text-light"><i class="far fa-clock me-1"></i> 24 hours</span>
+                            </div>
+                            <p class="card-text">Master techniques for analyzing Linux systems, investigating compromises, and responding to incidents in Linux environments.</p>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-light">0% Complete</span>
+                                <a href="courses/linux-forensics.html" class="btn btn-primary">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course 7 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Windows Forensics & Incident Response</h5>
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="badge bg-primary me-2">Advanced</span>
+                                <span class="text-light"><i class="far fa-clock me-1"></i> 24 hours</span>
+                            </div>
+                            <p class="card-text">Comprehensive analysis of Windows artifacts, event logs, registry, and file system to investigate security incidents.</p>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-light">0% Complete</span>
+                                <a href="courses/windows-forensics.html" class="btn btn-primary">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course 8 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Network Forensics & Threat Hunting</h5>
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="badge bg-primary me-2">Advanced</span>
+                                <span class="text-light"><i class="far fa-clock me-1"></i> 24 hours</span>
+                            </div>
+                            <p class="card-text">Learn to analyze network traffic, detect anomalies, and hunt for threats using packet capture analysis and network monitoring tools.</p>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-light">0% Complete</span>
+                                <a href="courses/network-forensics.html" class="btn btn-primary">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course 9 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Cloud Forensics</h5>
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="badge bg-primary me-2">Advanced</span>
+                                <span class="text-light"><i class="far fa-clock me-1"></i> 20 hours</span>
+                            </div>
+                            <p class="card-text">Master techniques for investigating incidents in cloud environments including AWS, Azure, and Google Cloud Platform.</p>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-light">0% Complete</span>
+                                <a href="courses/cloud-forensics.html" class="btn btn-primary">Start Course</a>
                             </div>
                         </div>
                     </div>
@@ -676,76 +561,82 @@
             </div>
         </div>
     </section>
-    
-    <!-- Section CTA -->
-    <section class="py-5 bg-primary text-white">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-3">Prêt à commencer votre parcours d'apprentissage ?</h2>
-            <p class="lead mb-4">Rejoignez notre communauté de plus de 5000 professionnels et étudiants en cybersécurité</p>
-            <button class="btn btn-light btn-lg px-4">S'inscrire gratuitement</button>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">About Digital Forensics Lab</h2>
+                    <p class="lead mb-4">Our platform provides comprehensive training in digital forensics and incident response, designed for cybersecurity professionals and enthusiasts.</p>
+                    <p class="mb-4">The Digital Forensics Lab offers hands-on training with real-world scenarios, industry-standard tools, and techniques used by professional investigators. Our courses are designed by experts with years of experience in the field.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#courses" class="btn btn-primary px-4 py-2">Explore Courses</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="assets/images/about-image.png" alt="About Digital Forensics Lab" class="img-fluid rounded-3 shadow-lg">
+                </div>
+            </div>
         </div>
     </section>
-    
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 mx-auto text-center">
+                    <h2 class="fw-bold mb-3">Contact Us</h2>
+                    <p class="lead">Have questions about our courses? Get in touch with our team.</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label text-light">Name</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Your name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label text-light">Email</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Your email">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="subject" class="form-label text-light">Subject</label>
+                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label text-light">Message</label>
+                                        <textarea class="form-control" id="message" rows="5" placeholder="Your message"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary w-100 py-2">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="footer py-4">
+    <footer class="py-4 border-top">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3 mb-4 mb-lg-0">
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fas fa-shield-alt text-primary me-2 fs-4"></i>
-                        <h5 class="mb-0">ForensicLab</h5>
-                    </div>
-                    <p class="text-muted">Plateforme de formation en investigation numérique pour les professionnels et étudiants en cybersécurité.</p>
-                    <div class="d-flex gap-2">
-                        <a href="#" class="text-muted"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-muted"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-muted"><i class="fab fa-github"></i></a>
-                        <a href="#" class="text-muted"><i class="fab fa-discord"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 mb-4 mb-lg-0">
-                    <h6 class="fw-bold mb-3">Liens rapides</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="index.html" class="text-muted">Accueil</a></li>
-                        <li class="mb-2"><a href="courses.html" class="text-muted">Cours</a></li>
-                        <li class="mb-2"><a href="labs.html" class="text-muted">Labs</a></li>
-                        <li class="mb-2"><a href="challenges.html" class="text-muted">Challenges</a></li>
-                        <li class="mb-2"><a href="community.html" class="text-muted">Communauté</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 mb-4 mb-lg-0">
-                    <h6 class="fw-bold mb-3">Ressources</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="blog.html" class="text-muted">Blog</a></li>
-                        <li class="mb-2"><a href="documentation.html" class="text-muted">Documentation</a></li>
-                        <li class="mb-2"><a href="faq.html" class="text-muted">FAQ</a></li>
-                        <li class="mb-2"><a href="support.html" class="text-muted">Support</a></li>
-                        <li class="mb-2"><a href="roadmap.html" class="text-muted">Roadmap</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h6 class="fw-bold mb-3">Contact</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="mailto:contact@forensiclab.fr" class="text-muted">contact@forensiclab.fr</a></li>
-                        <li class="mb-2"><a href="https://discord.gg/forensiclab" class="text-muted">Discord: brokcat</a></li>
-                    </ul>
-                    <h6 class="fw-bold mb-3 mt-4">Newsletter</h6>
-                    <div class="input-group">
-                        <input type="email" class="form-control" placeholder="Votre email">
-                        <button class="btn btn-primary" type="button">S'abonner</button>
-                    </div>
-                </div>
-            </div>
-            <hr class="my-4">
             <div class="row align-items-center">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="text-muted mb-0">&copy; 2025 ForensicLab. Tous droits réservés.</p>
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Digital Forensics Lab. All rights reserved.</p>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item"><a href="terms.html" class="text-muted">Conditions d'utilisation</a></li>
-                        <li class="list-inline-item"><a href="privacy.html" class="text-muted">Politique de confidentialité</a></li>
-                    </ul>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex gap-3 justify-content-md-end">
+                        <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
