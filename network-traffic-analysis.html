@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Traffic Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div class="preview-banner">
+        <span>Preview Mode</span>
+        <button class="upgrade-btn">Upgrade for Full Access</button>
+    </div>
+
+    <nav class="top-navbar">
+        <div class="nav-left">
+            <a href="index.html" class="logo">ForensicDefenders</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#" class="active">Courses</a>
+                <a href="#">Community</a>
+                <a href="#">About</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="profile-link"><i class="fas fa-user-circle"></i> Profile</a>
+        </div>
+    </nav>
+
+    <div id="app" class="main-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Network Analysis</h2>
+            </div>
+            <div class="sidebar-content">
+                <div class="course-progress">
+                    <div class="progress-header">
+                        <span>Course Progress</span>
+                        <span>{{ completedQuestions }}/{{ totalQuestions }}</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" :style="{ width: progressPercentage + '%' }"></div>
+                    </div>
+                </div>
+                
+                <ul class="question-list">
+                    <li v-for="(question, index) in questions" 
+                        :key="index" 
+                        :class="['question-item', 
+                                 {'completed': question.completed}, 
+                                 {'active': currentQuestionIndex === index}]"
+                        @click="setCurrentQuestion(index)">
+                        Q{{ index + 1 }}: {{ question.title }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="course-header">
+                <h1>Network Traffic Analysis</h1>
+                <p class="course-description">Learn to analyze network traffic to identify malicious communications, detect intrusions, and investigate data exfiltration.</p>
+            </div>
+
+            <div class="course-content">
+                <div class="course-section">
+                    <h2>Introduction to Network Traffic Analysis</h2>
+                    <p>Network traffic analysis is a critical component of cybersecurity that involves examining data packets traversing a network to identify suspicious or malicious activity. This course covers fundamental techniques and tools used in network forensics investigations.</p>
+                </div>
+
+                <div class="course-section">
+                    <h2>Packet Capture and Analysis Tools</h2>
+                    <p>Several tools are essential for effective network traffic analysis:</p>
+                    <ul>
+                        <li><strong>Wireshark</strong>: The most widely used network protocol analyzer for capturing and interactively browsing network traffic</li>
+                        <li><strong>tcpdump</strong>: A command-line packet analyzer that allows you to capture and display TCP/IP and other packets</li>
+                        <li><strong>NetworkMiner</strong>: A network forensic analysis tool that extracts artifacts from PCAP files</li>
+                        <li><strong>Zeek (formerly Bro)</strong>: A powerful network analysis framework that transforms network traffic into high-level events</li>
+                    </ul>
+                </div>
+
+                <div class="course-section">
+                    <h2>Network Protocols and Their Security Implications</h2>
+                    <p>Understanding common network protocols is essential for effective analysis:</p>
+                    <ul>
+                        <li><strong>TCP/IP</strong>: The fundamental suite of protocols that powers the internet</li>
+                        <li><strong>HTTP/HTTPS</strong>: Web traffic protocols, with HTTPS providing encryption</li>
+                        <li><strong>DNS</strong>: Domain Name System for resolving domain names to IP addresses (often abused for C2 communications)</li>
+                        <li><strong>SMB</strong>: Server Message Block protocol used for file sharing (commonly exploited in attacks)</li>
+                    </ul>
+                </div>
+
+                <div class="course-section">
+                    <h2>Detecting Common Attack Patterns</h2>
+                    <p>Learn to identify common attack signatures in network traffic:</p>
+                    <ol>
+                        <li><strong>Port Scanning</strong>: Detecting reconnaissance activities</li>
+                        <li><strong>Command and Control (C2) Traffic</strong>: Identifying malware communications</li>
+                        <li><strong>Data Exfiltration</strong>: Detecting unauthorized data transfers</li>
+                        <li><strong>Lateral Movement</strong>: Recognizing attackers moving through the network</li>
+                    </ol>
+                </div>
+
+                <div class="course-section">
+                    <h2>Practical Challenges</h2>
+                    <p>Complete the following challenges to test your understanding of network traffic analysis concepts.</p>
+                </div>
+            </div>
+
+            <div class="questions-section">
+                <div v-if="currentQuestion" class="question-container">
+                    <div class="question">
+                        <h3>Q{{ currentQuestionIndex + 1 }}</h3>
+                        <p>{{ currentQuestion.question }}</p>
+                        <input type="text" class="answer-input" v-model="currentQuestion.userAnswer" :placeholder="currentQuestion.placeholder">
+                        <div class="button-group">
+                            <button class="hint-button" @click="showHint = !showHint">🔍 Hints</button>
+                            <button class="submit-button" @click="checkAnswer">▶ Submit</button>
+                        </div>
+                        <div v-if="showHint" class="hint-box">
+                            <p><strong>Hint:</strong> {{ currentQuestion.hint }}</p>
+                        </div>
+                        <div v-if="feedback" class="feedback" :class="feedbackClass">
+                            {{ feedback }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                currentQuestionIndex: 0,
+                showHint: false,
+                feedback: '',
+                feedbackClass: '',
+                questions: [
+                    {
+                        title: 'Malicious Domain',
+                        question: 'What domain was used for command and control (C2) communications in the captured traffic?',
+                        answer: 'evil-server.malicious.com',
+                        userAnswer: '',
+                        completed: false,
+                        placeholder: 'Enter the domain name',
+                        hint: 'Look for unusual DNS queries or HTTP/HTTPS traffic to suspicious domains. Pay attention to repeated connections.'
+                    },
+                    {
+                        title: 'Data Exfiltration',
+                        question: 'What file was exfiltrated from the victim\'s machine? (Provide the filename with extension)',
+                        answer: 'customer_data.xlsx',
+                        userAnswer: '',
+                        completed: false,
+                        placeholder: 'Enter the filename',
+                        hint: 'Examine HTTP POST requests or look for file transfers over protocols like FTP or SMB.'
+                    },
+                    {
+                        title: 'Attacker IP',
+                        question: 'What is the IP address of the attacker\'s primary C2 server?',
+                        answer: '192.168.1.100',
+                        userAnswer: '',
+                        completed: false,
+                        placeholder: 'Enter the IP address',
+                        hint: 'Analyze the traffic patterns and look for the IP address associated with the malicious domain you identified earlier.'
+                    },
+                    {
+                        title: 'Protocol Analysis',
+                        question: 'Which non-standard port was used for the backdoor connection?',
+                        answer: '4444',
+                        userAnswer: '',
+                        completed: false,
+                        placeholder: 'Enter the port number',
+                        hint: 'Look for connections on unusual ports, especially those commonly used by malware and penetration testing tools.'
+                    }
+                ]
+            },
+            computed: {
+                totalQuestions() {
+                    return this.questions.length;
+                },
+                completedQuestions() {
+                    return this.questions.filter(q => q.completed).length;
+                },
+                progressPercentage() {
+                    return (this.completedQuestions / this.totalQuestions) * 100;
+                },
+                currentQuestion() {
+                    return this.questions[this.currentQuestionIndex];
+                }
+            },
+            methods: {
+                setCurrentQuestion(index) {
+                    this.currentQuestionIndex = index;
+                    this.showHint = false;
+                    this.feedback = '';
+                },
+                checkAnswer() {
+                    const question = this.questions[this.currentQuestionIndex];
+                    if (question.userAnswer.toLowerCase().trim() === question.answer.toLowerCase()) {
+                        this.feedback = 'Correct! Well done.';
+                        this.feedbackClass = 'correct';
+                        question.completed = true;
+                    } else {
+                        this.feedback = 'Incorrect. Try again.';
+                        this.feedbackClass = 'incorrect';
+                    }
+                    
+                    // Clear feedback after 3 seconds
+                    setTimeout(() => {
+                        this.feedback = '';
+                    }, 3000);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
