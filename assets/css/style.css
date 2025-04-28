@@ -541,3 +541,31 @@ nav {
     10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
     20%, 40%, 60%, 80% { transform: translateX(5px); }
 }
+
+/* Styles pour l'overlay flou */
+#blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 14;
+    pointer-events: none;
+}
+
+/* Classe pour flouter le contenu */
+.blur-content .main-content,
+.blur-content .sidebar {
+    filter: blur(5px);
+}
+
+/* S'assurer que la bannière reste au-dessus de l'overlay */
+.construction-banner {
+    z-index: 16;
+}
+
+/* Ajuster le z-index de la barre de navigation pour qu'elle reste au-dessus */
+.top-navbar {
+    z-index: 17;
+}

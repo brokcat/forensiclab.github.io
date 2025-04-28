@@ -1,18 +1,24 @@
-# Plateforme de Formation en Forensique Numérique
+<div align="center">
 
-Une plateforme complète de formation en forensique numérique inspirée par CyberDefenders, avec des cours, des labs et des challenges dans différents domaines de l'analyse forensique.
+# 🛠️ Plateforme de Formation en Forensique Numérique 🛠️
 
-## Fonctionnalités
+**Discord: brokcat**
 
-- Cours structurés en modules progressifs
-- Support pour le contenu en Markdown
-- Labs pratiques interactifs
-- Challenges de type CTF
-- Suivi de progression
-- Mode sombre/clair
-- Compatible avec GitHub Pages
+<img src="https://img.shields.io/badge/⚠️%20EN%20DÉVELOPPEMENT-FF9800?style=for-the-badge" alt="En développement" />
 
-## Domaines couverts
+</div>
+
+## 🚧 Statut du Projet
+
+**Ce repo GitHub héberge une plateforme de cours sur l'investigation forensique actuellement en cours de construction et de développement. Le site n'est pas disponible au public pour le moment.**
+
+La plateforme CyberForensics vise à offrir une formation complète en forensique numérique, avec des cours, des labs et des challenges dans différents domaines de l'analyse forensique. Nous travaillons activement pour vous proposer un contenu de qualité.
+
+## Date de lancement prévue
+
+La date de lancement officielle sera annoncée ultérieurement.
+
+## Domaines qui seront couverts
 
 - Analyse de mémoire (Memory Forensics)
 - Analyse de disque
@@ -21,54 +27,10 @@ Une plateforme complète de formation en forensique numérique inspirée par Cyb
 - Déobfuscation de code
 - Threat Hunting
 
-## Déploiement sur GitHub Pages
+## Contact
 
-1. Créez un nouveau dépôt GitHub
-2. Clonez ce dépôt sur votre machine locale
-3. Copiez tous les fichiers de ce projet dans votre dépôt local
-4. Poussez les modifications vers GitHub
-5. Activez GitHub Pages dans les paramètres du dépôt (Settings > Pages)
-6. Sélectionnez la branche `main` comme source
-7. Votre site sera disponible à l'adresse `https://[votre-nom-utilisateur].github.io/[nom-du-repo]/`
+Pour toute question concernant ce projet, veuillez nous contacter directement.
 
-## Structure du projet
+---
 
-```
-forensic-platform/
-├── index.html                  # Page d'accueil
-├── assets/                     # Ressources statiques
-│   ├── css/                    # Feuilles de style
-│   ├── js/                     # Scripts JavaScript
-│   └── images/                 # Images
-├── courses/                    # Contenu des cours
-│   ├── memory-forensics/       # Cours sur l'analyse de mémoire
-│   ├── disk-analysis/          # Cours sur l'analyse de disque
-│   ├── network-analysis/       # Cours sur l'analyse de trafic réseau
-│   ├── vba-analysis/           # Cours sur l'analyse de macros VBA
-│   ├── deobfuscation/          # Cours sur la déobfuscation
-│   └── threat-hunting/         # Cours sur le threat hunting
-├── labs/                       # Environnements de laboratoire
-└── challenges/                 # Défis et CTF
-```
-
-## Développement local
-
-Pour exécuter la plateforme localement :
-
-```bash
-# Utiliser un serveur HTTP simple avec Python
-python -m http.server 8000
-
-# Ou avec Node.js
-npx serve
-```
-
-Puis ouvrez votre navigateur à l'adresse `http://localhost:8000`
-
-## Contribution
-
-Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request pour améliorer la plateforme.
-
-## Licence
-
-MIT
+© 2025 CyberForensics - Tous droits réservés

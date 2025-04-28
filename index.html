@@ -32,11 +32,15 @@
             </div>
         </div>
         
+        <!-- Overlay flou qui couvre toute la page -->
+        <div id="blur-overlay"></div>
+        
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const passwordInput = document.getElementById('password-input');
                 const accessButton = document.getElementById('access-button');
                 const constructionBanner = document.querySelector('.construction-banner');
+                const blurOverlay = document.getElementById('blur-overlay');
                 
                 // Mot de passe correct
                 const correctPassword = 'brokcat11!?!?';
@@ -44,6 +48,10 @@
                 // Vérifier si l'utilisateur a déjà entré le bon mot de passe
                 if (localStorage.getItem('siteAccess') === 'granted') {
                     constructionBanner.style.display = 'none';
+                    blurOverlay.style.display = 'none';
+                } else {
+                    // Activer le flou par défaut si le mot de passe n'est pas encore entré
+                    document.body.classList.add('blur-content');
                 }
                 
                 accessButton.addEventListener('click', checkPassword);
@@ -57,8 +65,11 @@
                     if (passwordInput.value === correctPassword) {
                         // Stocker l'accès dans le localStorage
                         localStorage.setItem('siteAccess', 'granted');
-                        // Cacher la bannière
+                        // Cacher la bannière et l'overlay
                         constructionBanner.style.display = 'none';
+                        blurOverlay.style.display = 'none';
+                        // Enlever le flou
+                        document.body.classList.remove('blur-content');
                     } else {
                         // Secouer l'input pour indiquer une erreur
                         passwordInput.classList.add('shake');
