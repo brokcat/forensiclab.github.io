@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres - Digital Forensics Lab</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bg-dark">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-shield-alt"></i> Digital Forensics Lab
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Cours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leaderboard.html">Classement</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i> Mon Profil
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.html">Profil</a></li>
+                            <li><a class="dropdown-item active" href="settings.html">Paramètres</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="auth.logout()">Déconnexion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Settings Content -->
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Account Settings -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Paramètres du Compte</h5>
+                        <form id="accountSettingsForm">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Nom d'utilisateur</label>
+                                <input type="text" class="form-control" id="username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="currentPassword" class="form-label">Mot de passe actuel</label>
+                                <input type="password" class="form-control" id="currentPassword">
+                            </div>
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label">Nouveau mot de passe</label>
+                                <input type="password" class="form-control" id="newPassword">
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmNewPassword" class="form-label">Confirmer le nouveau mot de passe</label>
+                                <input type="password" class="form-control" id="confirmNewPassword">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interface Settings -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Paramètres de l'Interface</h5>
+                        <div class="mb-3">
+                            <label class="form-label">Thème</label>
+                            <select class="form-select" id="themeSelect">
+                                <option value="dark">Sombre</option>
+                                <option value="light">Clair</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Taille de police</label>
+                            <select class="form-select" id="fontSizeSelect">
+                                <option value="small">Petite</option>
+                                <option value="medium">Moyenne</option>
+                                <option value="large">Grande</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Langue</label>
+                            <select class="form-select" id="languageSelect">
+                                <option value="fr">Français</option>
+                                <option value="en">Anglais</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary">Enregistrer les préférences</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications -->
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Notifications</h5>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="emailNotifications">
+                            <label class="form-check-label" for="emailNotifications">
+                                Recevoir des notifications par email
+                            </label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="mobileNotifications">
+                            <label class="form-check-label" for="mobileNotifications">
+                                Recevoir des notifications sur mobile
+                            </label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="weeklyDigest">
+                            <label class="form-check-label" for="weeklyDigest">
+                                Recevoir un résumé hebdomadaire
+                            </label>
+                        </div>
+                        <button class="btn btn-primary">Enregistrer les préférences</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/settings.js"></script>
+    <script>
+        // Vérifier si l'utilisateur est connecté
+        if (!auth.getCurrentUser()) {
+            window.location.href = '../auth/login.html';
+        }
+
+        // Initialiser les paramètres
+        document.addEventListener('DOMContentLoaded', () => {
+            const settings = new SettingsSystem();
+            const user = auth.getCurrentUser();
+            loadSettings(user);
+        });
+
+        function loadSettings(user) {
+            // Charger les paramètres du compte
+            document.getElementById('username').value = user.username;
+            document.getElementById('email').value = user.email;
+
+            // Charger les préférences d'interface
+            const settings = settings.getUserSettings(user.id);
+            document.getElementById('themeSelect').value = settings.theme || 'dark';
+            document.getElementById('fontSizeSelect').value = settings.fontSize || 'medium';
+            document.getElementById('languageSelect').value = settings.language || 'fr';
+
+            // Charger les préférences de notifications
+            document.getElementById('emailNotifications').checked = settings.emailNotifications || false;
+            document.getElementById('mobileNotifications').checked = settings.mobileNotifications || false;
+            document.getElementById('weeklyDigest').checked = settings.weeklyDigest || false;
+        }
+
+        // Gérer la mise à jour du compte
+        document.getElementById('accountSettingsForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const user = auth.getCurrentUser();
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmNewPassword').value;
+
+            if (newPassword && newPassword !== confirmPassword) {
+                alert('Les mots de passe ne correspondent pas.');
+                return;
+            }
+
+            // Mettre à jour les informations du compte
+            settings.updateUserSettings(user.id, {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value
+            });
+
+            if (newPassword) {
+                // Mettre à jour le mot de passe (à implémenter)
+            }
+
+            alert('Paramètres du compte mis à jour avec succès.');
+        });
+
+        // Gérer la sauvegarde des préférences
+        const saveButtons = document.querySelectorAll('button[type="button"][class*="btn-primary"]');
+        saveButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const user = auth.getCurrentUser();
+                const settings = {
+                    theme: document.getElementById('themeSelect').value,
+                    fontSize: document.getElementById('fontSizeSelect').value,
+                    language: document.getElementById('languageSelect').value,
+                    emailNotifications: document.getElementById('emailNotifications').checked,
+                    mobileNotifications: document.getElementById('mobileNotifications').checked,
+                    weeklyDigest: document.getElementById('weeklyDigest').checked
+                };
+                settings.updateUserSettings(user.id, settings);
+                alert('Préférences enregistrées avec succès.');
+            });
+        });
+    </script>
+</body>
+</html>
