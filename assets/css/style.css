@@ -1,0 +1,152 @@
+/*
+  ForensicLab Modern Theme (Bleu/Noir, Light/Dark)
+  Palette inspirée du digital, police moderne, animations douces
+*/
+:root {
+  --primary-blue: #2563eb;
+  --primary-blue-dark: #1e40af;
+  --primary-blue-light: #60a5fa;
+  --background-light: #f8fafc;
+  --background-dark: #0f172a;
+  --surface-light: #ffffff;
+  --surface-dark: #1e293b;
+  --text-light: #0f172a;
+  --text-dark: #f8fafc;
+  --accent: #38bdf8;
+  --success: #22d3ee;
+  --danger: #f43f5e;
+  --warning: #facc15;
+  --border-radius: 18px;
+  --transition: 0.3s cubic-bezier(.4,0,.2,1);
+  --shadow: 0 4px 24px rgba(30,64,175,0.08);
+  --badge-bg: linear-gradient(90deg, #2563eb 60%, #38bdf8 100%);
+}
+[data-theme="dark"] {
+  --background-light: #0f172a;
+  --surface-light: #1e293b;
+  --text-light: #f8fafc;
+}
+body {
+  background: var(--background-light);
+  color: var(--text-light);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  transition: background var(--transition), color var(--transition);
+}
+header, footer {
+  background: var(--surface-light);
+  box-shadow: var(--shadow);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  transition: background var(--transition);
+}
+nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+nav a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  transition: background var(--transition), color var(--transition);
+}
+nav a.active, nav a:hover {
+  background: var(--primary-blue);
+  color: #fff;
+}
+.sidebar {
+  background: var(--surface-light);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 1rem;
+  min-width: 230px;
+  min-height: 70vh;
+  position: sticky;
+  top: 2rem;
+  margin-right: 2rem;
+}
+.main-content {
+  flex: 1;
+  background: var(--surface-light);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  min-height: 70vh;
+  transition: background var(--transition);
+}
+.flex {
+  display: flex;
+}
+.progress-bar {
+  background: #e0e7ef;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 18px;
+  margin: 1rem 0;
+}
+.progress-bar-inner {
+  background: var(--badge-bg);
+  height: 100%;
+  width: 40%; /* à ajuster dynamiquement */
+  transition: width var(--transition);
+}
+.badge {
+  display: inline-block;
+  background: var(--badge-bg);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(56,189,248,0.12);
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+}
+.theme-toggle {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1.6rem;
+  margin-left: 1rem;
+  color: var(--primary-blue);
+  transition: color var(--transition);
+}
+[data-theme="dark"] body,
+[data-theme="dark"] .sidebar,
+[data-theme="dark"] .main-content,
+[data-theme="dark"] header,
+[data-theme="dark"] footer {
+  background: var(--background-dark);
+  color: var(--text-dark);
+}
+[data-theme="dark"] nav a {
+  color: var(--primary-blue-light);
+}
+[data-theme="dark"] nav a.active, [data-theme="dark"] nav a:hover {
+  background: var(--primary-blue-light);
+  color: #0f172a;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background: #e0e7ef;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-blue-light);
+  border-radius: 10px;
+}
+@media (max-width: 900px) {
+  .flex {
+    flex-direction: column;
+  }
+  .sidebar {
+    margin-right: 0;
+    margin-bottom: 2rem;
+    min-width: 0;
+  }
+}
