@@ -14,297 +14,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Notre thème personnalisé (intégré) -->
-    <style>
-        :root {
-            /* Couleurs de base en mode clair */
-            --primary: #6a3de8; /* Violet principal */
-            --primary-rgb: 106, 61, 232;
-            --primary-hover: #5a2dd8;
-            --primary-light: #8a63f7;
-            --primary-dark: #4a1db8;
-            --secondary: #6c757d;
-            --secondary-rgb: 108, 117, 125;
-            --success: #38a169;
-            --info: #3498db;
-            --warning: #f39c12;
-            --danger: #dc2626;
-            --light: #f1f5f9;
-            --dark: #1e293b;
-            --body-bg: #6a3de8; /* Fond violet */
-            --body-color: #ffffff; /* Texte blanc */
-            --body-color-rgb: 255, 255, 255;
-            --heading-color: #ffffff; /* Titres en blanc */
-            --border-color: #8a63f7;
-            --card-bg: #6a3de8; /* Cartes avec fond violet plus clair */
-            --sidebar-bg: #6a3de8;
-            --sidebar-hover: #9a73ff;
-            --sidebar-active: #ffffff;
-        }
-        
-        [data-theme="dark"] {
-            /* Couleurs en mode sombre */
-            --primary: #8a63f7; /* Violet plus clair pour le mode sombre */
-            --primary-rgb: 138, 99, 247;
-            --primary-hover: #9a73ff;
-            --primary-light: #9a73ff;
-            --primary-dark: #b59aff;
-            --body-bg: #6a3de8; /* Fond violet */
-            --body-color: #ffffff; /* Texte blanc */
-            --body-color-rgb: 255, 255, 255;
-            --heading-color: #ffffff; /* Titres en blanc */
-            --border-color: #9a73ff;
-            --card-bg: #6a3de8; /* Cartes avec fond violet plus clair */
-            --sidebar-bg: #6a3de8;
-            --sidebar-hover: #9a73ff;
-            --sidebar-active: #ffffff;
-        }
-        
-        body {
-            background-color: var(--body-bg);
-            color: var(--body-color);
-            font-family: 'Inter', sans-serif;
-        }
-        
-        /* Styles pour la bannière de construction */
-        .construction-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 15px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .password-form-inline {
-            display: flex;
-            margin-top: 10px;
-            width: 100%;
-            max-width: 500px;
-        }
-        
-        #password-input {
-            flex-grow: 1;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            outline: none;
-        }
-        
-        #access-button {
-            background-color: white;
-            color: var(--primary);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-        
-        #access-button:hover {
-            background-color: #f1f1f1;
-        }
-        
-        .shake {
-            animation: shake 0.5s;
-        }
-        
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
-        }
-        
-        #blur-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            z-index: 999;
-            display: none;
-        }
-        
-        /* Styles pour la navbar */
-        .navbar {
-            background-color: var(--primary);
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .navbar-brand {
-            color: #ffffff;
-            font-weight: 600;
-        }
-        
-        .nav-link {
-            color: #ffffff;
-            font-weight: 500;
-        }
-        
-        .nav-link.active, .nav-link:hover {
-            color: var(--light);
-        }
-        
-        /* Styles pour les boutons */
-        .btn-primary {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-            border-color: var(--primary-hover);
-        }
-        
-        .btn-outline-primary {
-            color: #ffffff;
-            border-color: #ffffff;
-        }
-        
-        .btn-outline-primary:hover {
-            background-color: #ffffff;
-            color: var(--primary);
-        }
-        
-        /* Styles pour les sections */
-        .bg-light {
-            background-color: var(--primary) !important;
-        }
-        
-        [data-theme="dark"] .bg-light {
-            background-color: var(--primary) !important;
-        }
-        
-        .bg-primary {
-            background-color: var(--primary-dark) !important;
-        }
-        
-        /* Styles pour les cartes */
-        .card {
-            background-color: var(--primary-light);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.1);
-        }
-        
-        .card-title {
-            color: var(--heading-color);
-            font-weight: 600;
-        }
-        
-        /* Styles pour le footer */
-        footer {
-            background-color: var(--card-bg);
-            border-top: 1px solid var(--border-color);
-        }
-        
-        /* Styles pour le switch de thème */
-        .theme-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 30px;
-        }
-        
-        .theme-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 30px;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 22px;
-            width: 22px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .slider {
-            background-color: var(--primary);
-        }
-        
-        input:checked + .slider:before {
-            transform: translateX(30px);
-        }
-        
-        .slider .fa-sun {
-            position: absolute;
-            left: 8px;
-            top: 6px;
-            color: #fff;
-            font-size: 14px;
-            transition: .4s;
-            opacity: 1;
-        }
-        
-        .slider .fa-moon {
-            position: absolute;
-            right: 8px;
-            top: 6px;
-            color: #fff;
-            font-size: 14px;
-            transition: .4s;
-            opacity: 0;
-        }
-        
-        input:checked + .slider .fa-sun {
-            opacity: 0;
-        }
-        
-        input:checked + .slider .fa-moon {
-            opacity: 1;
-        }
-        
-        /* Styles pour la barre de progression */
-        .progress {
-            background-color: var(--primary-light);
-        }
-        
-        .progress-bar {
-            background-color: var(--primary);
-        }
-        
-        /* Styles pour les badges */
-        .badge.bg-primary {
-            background-color: var(--primary) !important;
-        }
-        
-        .badge.bg-secondary {
-            background-color: var(--secondary) !important;
-        }
-    </style>
+    <!-- Nouveau style moderne -->
+    <link rel="stylesheet" href="assets/css/style.css">
     
     <meta name="description" content="Professional training platform for digital forensics and incident response">
 </head>
@@ -344,28 +55,45 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="theme-toggle" title="Changer de thème" style="background:none;border:none;font-size:1.5rem;cursor:pointer;vertical-align:middle;">🌙</button>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section + Gamification Sidebar -->
     <section class="py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4">Master Digital Forensics Skills</h1>
-                    <p class="lead mb-4">Comprehensive training platform for cybersecurity professionals. Learn industry-standard techniques and tools used in digital forensic investigations.</p>
-                    <div class="d-flex gap-3">
-                        <a href="#courses" class="btn btn-primary px-4 py-2">Start Learning</a>
-                        <a href="#about" class="btn btn-outline-primary px-4 py-2">Learn More</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <img src="assets/images/hero-image.png" alt="Digital Forensics" class="img-fluid rounded-3 shadow-lg">
-                </div>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <h1 class="display-4 fw-bold mb-4">Master Digital Forensics Skills</h1>
+            <p class="lead mb-4">Comprehensive training platform for cybersecurity professionals. Learn industry-standard techniques and tools used in digital forensic investigations.</p>
+            <div class="d-flex gap-3 mb-4">
+              <a href="#courses" class="btn btn-primary px-4 py-2">Start Learning</a>
+              <a href="#about" class="btn btn-outline-primary px-4 py-2">Learn More</a>
             </div>
+          </div>
+          <div class="col-lg-5">
+            <img src="assets/images/hero-image.png" alt="Digital Forensics" class="img-fluid rounded-3 shadow-lg">
+          </div>
+          <div class="col-lg-12 mt-4">
+            <div class="card shadow-sm" style="background:var(--surface-light);border-radius:18px;">
+              <div class="card-body">
+                <h5 class="card-title mb-3">🎮 Progression & Badges</h5>
+                <div class="progress-bar" style="background:#e0e7ef;border-radius:999px;overflow:hidden;height:18px;margin-bottom:1rem;">
+                  <div class="progress-bar-inner" style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%);height:100%;width:40%;transition:width 0.3s;"></div>
+                </div>
+                <div id="badges">
+                  <span class="badge" style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%);color:#fff;border-radius:999px;padding:0.4rem 1rem;font-weight:700;box-shadow:0 2px 8px rgba(56,189,248,0.12);margin-right:0.5rem;margin-bottom:0.5rem;font-size:1rem;letter-spacing:0.03em;">Débutant 🔰</span>
+                  <span class="badge" style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%);color:#fff;border-radius:999px;padding:0.4rem 1rem;font-weight:700;box-shadow:0 2px 8px rgba(56,189,248,0.12);margin-right:0.5rem;margin-bottom:0.5rem;font-size:1rem;letter-spacing:0.03em;">Enquêteur 🕵️‍♂️</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Courses Section -->
