@@ -20,6 +20,11 @@
   --transition: 0.3s cubic-bezier(.4,0,.2,1);
   --shadow: 0 4px 24px rgba(30,64,175,0.08);
   --badge-bg: linear-gradient(90deg, #2563eb 60%, #38bdf8 100%);
+  --card-bg: #1e293b;
+  --card-shadow: 0 4px 24px rgba(30,64,175,0.1);
+  --progress-bg: #2d3748;
+  --progress-color: #2563eb;
+  --dashboard-sidebar-width: 250px;
 }
 [data-theme="dark"] {
   --background-light: #0f172a;
